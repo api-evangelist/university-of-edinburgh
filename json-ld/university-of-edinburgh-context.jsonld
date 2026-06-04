@@ -1,0 +1,67 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "uoe": "https://www.ed.ac.uk/ns/",
+    "@vocab": "https://www.ed.ac.uk/ns/",
+    "University": "schema:CollegeOrUniversity",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "DataShareItem": {
+      "@id": "uoe:DataShareItem",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "dcterms:title",
+        "handle": "dcterms:identifier",
+        "lastModified": "dcterms:modified",
+        "metadata": "uoe:metadata",
+        "bitstreams": { "@id": "uoe:bitstream", "@container": "@set" },
+        "link": "schema:url"
+      }
+    },
+    "Community": {
+      "@id": "uoe:Community",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "schema:name",
+        "handle": "dcterms:identifier",
+        "shortDescription": "schema:description",
+        "countItems": "uoe:itemCount"
+      }
+    },
+    "Collection": {
+      "@id": "uoe:Collection",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "schema:name",
+        "handle": "dcterms:identifier",
+        "numberItems": "uoe:itemCount"
+      }
+    },
+    "Bitstream": {
+      "@id": "uoe:Bitstream",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "schema:name",
+        "mimeType": "schema:encodingFormat",
+        "sizeBytes": "schema:contentSize",
+        "retrieveLink": "schema:contentUrl"
+      }
+    },
+    "MetadataEntry": {
+      "@id": "uoe:MetadataEntry",
+      "@context": {
+        "key": "uoe:metadataKey",
+        "value": "schema:value",
+        "schema": "uoe:metadataSchema",
+        "element": "uoe:metadataElement",
+        "qualifier": "uoe:metadataQualifier"
+      }
+    }
+  },
+  "@type": "University",
+  "name": "University of Edinburgh",
+  "url": "https://www.ed.ac.uk/"
+}

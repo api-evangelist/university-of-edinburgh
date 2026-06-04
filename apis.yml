@@ -43,6 +43,20 @@ apis:
     properties:
       - type: Documentation
         url: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+      - type: OpenAPI
+        url: openapi/university-of-edinburgh-datashare-rest.yaml
+      - type: JSONSchema
+        url: json-schema/university-of-edinburgh-item-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-edinburgh-item-structure.json
+      - type: x-examples
+        url: examples/university-of-edinburgh-getItem-example.json
+      - type: x-spectral-rules
+        url: rules/university-of-edinburgh-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-edinburgh-vocabulary.yml
+      - type: x-json-ld-context
+        url: json-ld/university-of-edinburgh-context.jsonld
   - aid: university-of-edinburgh:datashare-oai
     name: Edinburgh DataShare OAI-PMH
     description: >-

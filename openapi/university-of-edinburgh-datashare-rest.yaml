@@ -1,0 +1,725 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare REST API
+  description: >-
+    Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the
+    University of Edinburgh's open-access research-data repository. Allows
+    programmatic querying of communities, collections, items, bitstreams and
+    the metadata/schema registry. Responses are JSON. This specification was
+    reconstructed from the live API index at https://datashare.ed.ac.uk/rest
+    and verified against live responses; only the documented public GET
+    endpoints are described here.
+  version: "6.x"
+  contact:
+    name: Edinburgh DataShare
+    url: https://datashare.ed.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-6_x/LICENSE
+servers:
+  - url: https://datashare.ed.ac.uk/rest
+    description: Edinburgh DataShare production REST endpoint
+tags:
+  - name: Status
+    description: Service status
+  - name: Communities
+    description: Top-level and nested communities
+  - name: Collections
+    description: Collections of items
+  - name: Items
+    description: Repository items and their metadata/bitstreams
+  - name: Bitstreams
+    description: Binary files attached to items
+  - name: Registries
+    description: Metadata schema and field registry
+  - name: Hierarchy
+    description: Community/collection tree
+paths:
+  /test:
+    get:
+      tags: [Status]
+      summary: Health check
+      description: Returns the string "REST api is running." for testing purposes.
+      operationId: getTest
+      responses:
+        '200':
+          description: Service is running.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: REST api is running.
+  /communities:
+    get:
+      tags: [Communities]
+      summary: List communities
+      description: Return an array of all communities in DSpace.
+      operationId: getCommunities
+      parameters:
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of communities.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Community'
+  /communities/top-communities:
+    get:
+      tags: [Communities]
+      summary: List top-level communities
+      description: Returns an array of all top-level communities in DSpace.
+      operationId: getTopCommunities
+      parameters:
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Array of top-level communities.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Community'
+  /communities/{communityId}:
+    get:
+      tags: [Communities]
+      summary: Get community
+      description: Returns a community with the specified ID.
+      operationId: getCommunity
+      parameters:
+        - $ref: '#/components/parameters/communityId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested community.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/collections:
+    get:
+      tags: [Communities]
+      summary: List collections of a community
+      description: Returns an array of collections of the specified community.
+      operationId: getCommunityCollections
+      parameters:
+        - $ref: '#/components/parameters/communityId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Array of collections.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+  /communities/{communityId}/communities:
+    get:
+      tags: [Communities]
+      summary: List subcommunities of a community
+      description: Returns an array of subcommunities of the specified community.
+      operationId: getSubCommunities
+      parameters:
+        - $ref: '#/components/parameters/communityId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Array of subcommunities.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Community'
+  /collections:
+    get:
+      tags: [Collections]
+      summary: List collections
+      description: Return all DSpace collections in an array.
+      operationId: getCollections
+      parameters:
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of collections.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+  /collections/{collectionId}:
+    get:
+      tags: [Collections]
+      summary: Get collection
+      description: Return a collection with the specified ID.
+      operationId: getCollection
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /collections/{collectionId}/items:
+    get:
+      tags: [Collections]
+      summary: List items of a collection
+      description: Return all items of the specified collection.
+      operationId: getCollectionItems
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /items:
+    get:
+      tags: [Items]
+      summary: List items
+      description: Return a list of items.
+      operationId: getItems
+      parameters:
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /items/{itemId}:
+    get:
+      tags: [Items]
+      summary: Get item
+      description: Return the specified item.
+      operationId: getItem
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /items/{itemId}/metadata:
+    get:
+      tags: [Items]
+      summary: Get item metadata
+      description: Return metadata of the specified item.
+      operationId: getItemMetadata
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Array of metadata entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetadataEntry'
+  /items/{itemId}/bitstreams:
+    get:
+      tags: [Items]
+      summary: Get item bitstreams
+      description: Return bitstreams of the specified item.
+      operationId: getItemBitstreams
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Array of bitstreams.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bitstream'
+  /bitstreams:
+    get:
+      tags: [Bitstreams]
+      summary: List bitstreams
+      description: Return all bitstreams in DSpace.
+      operationId: getBitstreams
+      parameters:
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of bitstreams.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bitstream'
+  /bitstreams/{bitstreamId}:
+    get:
+      tags: [Bitstreams]
+      summary: Get bitstream
+      description: Return the specified bitstream.
+      operationId: getBitstream
+      parameters:
+        - $ref: '#/components/parameters/bitstreamId'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested bitstream.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bitstream'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /bitstreams/{bitstreamId}/policy:
+    get:
+      tags: [Bitstreams]
+      summary: Get bitstream policies
+      description: Return policies of the specified bitstream.
+      operationId: getBitstreamPolicy
+      parameters:
+        - $ref: '#/components/parameters/bitstreamId'
+      responses:
+        '200':
+          description: Array of resource policies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcePolicy'
+  /bitstreams/{bitstreamId}/retrieve:
+    get:
+      tags: [Bitstreams]
+      summary: Retrieve bitstream content
+      description: Return the contents (raw bytes) of the specified bitstream.
+      operationId: retrieveBitstream
+      parameters:
+        - $ref: '#/components/parameters/bitstreamId'
+      responses:
+        '200':
+          description: The binary contents of the bitstream.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /hierarchy:
+    get:
+      tags: [Hierarchy]
+      summary: Get repository hierarchy
+      description: >-
+        Return hierarchy of communities and collections in tree form. Each
+        object is minimally populated (name, handle, id) for efficient
+        retrieval.
+      operationId: getHierarchy
+      responses:
+        '200':
+          description: The community/collection hierarchy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyNode'
+  /registries/schema:
+    get:
+      tags: [Registries]
+      summary: List metadata schemas
+      description: Return the list of metadata schemas in the registry.
+      operationId: getSchemas
+      responses:
+        '200':
+          description: Array of metadata schemas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetadataSchema'
+  /registries/schema/{schemaPrefix}:
+    get:
+      tags: [Registries]
+      summary: Get metadata schema
+      description: Returns the specified metadata schema.
+      operationId: getSchema
+      parameters:
+        - name: schemaPrefix
+          in: path
+          required: true
+          description: Schema prefix (e.g. dc).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested metadata schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataSchema'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    expand:
+      name: expand
+      in: query
+      required: false
+      description: >-
+        Comma-separated list of optional fields to expand in the response
+        (e.g. metadata, bitstreams, collections, parentCommunity, all).
+      schema:
+        type: string
+      example: metadata,bitstreams
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Offset into the result set for pagination.
+      schema:
+        type: integer
+        default: 0
+    communityId:
+      name: communityId
+      in: path
+      required: true
+      description: UUID of the community.
+      schema:
+        type: string
+        format: uuid
+    collectionId:
+      name: collectionId
+      in: path
+      required: true
+      description: UUID of the collection.
+      schema:
+        type: string
+        format: uuid
+    itemId:
+      name: itemId
+      in: path
+      required: true
+      description: UUID of the item.
+      schema:
+        type: string
+        format: uuid
+    bitstreamId:
+      name: bitstreamId
+      in: path
+      required: true
+      description: UUID of the bitstream.
+      schema:
+        type: string
+        format: uuid
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+  schemas:
+    DSpaceObject:
+      type: object
+      description: Common fields shared by all DSpace REST objects.
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        handle:
+          type: string
+          nullable: true
+          description: Persistent handle identifier (e.g. 10283/928).
+        type:
+          type: string
+          enum: [community, collection, item, bitstream]
+        expand:
+          type: array
+          items:
+            type: string
+        link:
+          type: string
+          description: Relative REST link to this object.
+    Community:
+      allOf:
+        - $ref: '#/components/schemas/DSpaceObject'
+        - type: object
+          properties:
+            logo:
+              $ref: '#/components/schemas/Bitstream'
+            parentCommunity:
+              $ref: '#/components/schemas/Community'
+            copyrightText:
+              type: string
+            introductoryText:
+              type: string
+            shortDescription:
+              type: string
+            sidebarText:
+              type: string
+            countItems:
+              type: integer
+            collections:
+              type: array
+              items:
+                $ref: '#/components/schemas/Collection'
+            subcommunities:
+              type: array
+              items:
+                $ref: '#/components/schemas/Community'
+    Collection:
+      allOf:
+        - $ref: '#/components/schemas/DSpaceObject'
+        - type: object
+          properties:
+            logo:
+              $ref: '#/components/schemas/Bitstream'
+            parentCommunity:
+              $ref: '#/components/schemas/Community'
+            parentCommunityList:
+              type: array
+              items:
+                $ref: '#/components/schemas/Community'
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/Item'
+            license:
+              type: string
+              nullable: true
+            copyrightText:
+              type: string
+            introductoryText:
+              type: string
+            shortDescription:
+              type: string
+            sidebarText:
+              type: string
+            numberItems:
+              type: integer
+    Item:
+      allOf:
+        - $ref: '#/components/schemas/DSpaceObject'
+        - type: object
+          properties:
+            lastModified:
+              type: string
+              description: Last modification timestamp.
+            parentCollection:
+              $ref: '#/components/schemas/Collection'
+            parentCollectionList:
+              type: array
+              nullable: true
+              items:
+                $ref: '#/components/schemas/Collection'
+            parentCommunityList:
+              type: array
+              nullable: true
+              items:
+                $ref: '#/components/schemas/Community'
+            metadata:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataEntry'
+            bitstreams:
+              type: array
+              items:
+                $ref: '#/components/schemas/Bitstream'
+            archived:
+              type: string
+            withdrawn:
+              type: string
+    Bitstream:
+      allOf:
+        - $ref: '#/components/schemas/DSpaceObject'
+        - type: object
+          properties:
+            bundleName:
+              type: string
+              description: Bundle the bitstream belongs to (e.g. ORIGINAL, THUMBNAIL, CC-LICENSE).
+            description:
+              type: string
+              nullable: true
+            format:
+              type: string
+              description: Human-readable format label (e.g. JPEG).
+            mimeType:
+              type: string
+            sizeBytes:
+              type: integer
+              format: int64
+            parentObject:
+              type: object
+              nullable: true
+            retrieveLink:
+              type: string
+            checkSum:
+              $ref: '#/components/schemas/CheckSum'
+            sequenceId:
+              type: integer
+            policies:
+              type: array
+              nullable: true
+              items:
+                $ref: '#/components/schemas/ResourcePolicy'
+    CheckSum:
+      type: object
+      properties:
+        value:
+          type: string
+        checkSumAlgorithm:
+          type: string
+          example: MD5
+    MetadataEntry:
+      type: object
+      properties:
+        key:
+          type: string
+          example: dc.contributor.author
+        value:
+          type: string
+        language:
+          type: string
+          nullable: true
+        schema:
+          type: string
+          example: dc
+        element:
+          type: string
+          example: contributor
+        qualifier:
+          type: string
+          nullable: true
+    MetadataSchema:
+      type: object
+      properties:
+        schemaID:
+          type: integer
+        prefix:
+          type: string
+          example: dc
+        namespace:
+          type: string
+        expand:
+          type: array
+          items:
+            type: string
+        metadataFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataField'
+    MetadataField:
+      type: object
+      properties:
+        fieldId:
+          type: integer
+        name:
+          type: string
+        element:
+          type: string
+        qualifier:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        parentSchema:
+          type: integer
+          nullable: true
+        expand:
+          type: array
+          items:
+            type: string
+    ResourcePolicy:
+      type: object
+      properties:
+        id:
+          type: integer
+        action:
+          type: string
+        epersonId:
+          type: integer
+        groupId:
+          type: integer
+        resourceId:
+          type: integer
+        resourceType:
+          type: string
+        rpDescription:
+          type: string
+          nullable: true
+        rpName:
+          type: string
+          nullable: true
+        rpType:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+          nullable: true
+        endDate:
+          type: string
+          nullable: true
+    HierarchyNode:
+      type: object
+      description: Minimally populated community/collection tree node.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        handle:
+          type: string
+        community:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyNode'
+        collection:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyNode'

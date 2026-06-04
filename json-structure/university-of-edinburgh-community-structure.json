@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://datashare.ed.ac.uk/structure/community.json",
+  "name": "DataShareCommunity",
+  "type": "object",
+  "description": "JSON Structure for an Edinburgh DataShare DSpace community.",
+  "properties": {
+    "uuid": { "type": "string" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"] },
+    "type": { "type": "string" },
+    "copyrightText": { "type": "string" },
+    "introductoryText": { "type": "string" },
+    "shortDescription": { "type": "string" },
+    "sidebarText": { "type": "string" },
+    "countItems": { "type": "int32" },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type"]
+}

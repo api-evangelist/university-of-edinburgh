@@ -1,0 +1,59 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://datashare.ed.ac.uk/rest/items/000482ff-275e-4716-9b5b-eceff69946f0?expand=metadata,bitstreams",
+    "headers": { "Accept": "application/json" }
+  },
+  "response": {
+    "uuid": "000482ff-275e-4716-9b5b-eceff69946f0",
+    "name": "Tower Blocks UK: Glasgow City Royston redevelopment area, Area 'B' (Phase I and II - Millburn Street I), glw2-42.jpg",
+    "handle": "10283/5507",
+    "type": "item",
+    "expand": ["parentCollection", "parentCollectionList", "parentCommunityList", "all"],
+    "lastModified": "2023-06-02 11:04:32.347",
+    "parentCollection": null,
+    "parentCollectionList": null,
+    "parentCommunityList": null,
+    "metadata": [
+      {
+        "key": "dc.contributor",
+        "value": "Glendinning, Miles",
+        "language": "",
+        "schema": "dc",
+        "element": "contributor",
+        "qualifier": null
+      },
+      {
+        "key": "dc.coverage.spatial",
+        "value": "Glasgow City",
+        "language": "",
+        "schema": "dc",
+        "element": "coverage",
+        "qualifier": "spatial"
+      }
+    ],
+    "bitstreams": [
+      {
+        "uuid": "977895c1-18ee-42f5-9606-bc472d18ce84",
+        "name": "glw2-42.jpg",
+        "handle": null,
+        "type": "bitstream",
+        "expand": ["parent", "policies", "all"],
+        "bundleName": "ORIGINAL",
+        "description": null,
+        "format": "JPEG",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 748040,
+        "parentObject": null,
+        "retrieveLink": "/rest/bitstreams/977895c1-18ee-42f5-9606-bc472d18ce84/retrieve",
+        "checkSum": {
+          "value": "56f66bb872a58a41f7d0a271bf693dab",
+          "checkSumAlgorithm": "MD5"
+        },
+        "sequenceId": 1,
+        "policies": null,
+        "link": "/rest/bitstreams/977895c1-18ee-42f5-9606-bc472d18ce84"
+      }
+    ]
+  }
+}

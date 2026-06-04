@@ -1,0 +1,14 @@
+{
+  "repo": "university-of-edinburgh",
+  "feeds": [
+    {
+      "source": "https://libraryblogs.is.ed.ac.uk/datablog/",
+      "feed_url": "https://libraryblogs.is.ed.ac.uk/datablog/feed/",
+      "title": "Edinburgh DataShare / Research Data Service DataBlog",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-03T00:00:00Z"
+}

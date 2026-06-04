@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://datashare.ed.ac.uk/schema/bitstream.json",
+  "title": "Edinburgh DataShare Bitstream",
+  "description": "A DSpace bitstream (binary file) as returned by the Edinburgh DataShare REST API /bitstreams endpoint.",
+  "type": "object",
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"] },
+    "type": { "type": "string", "const": "bitstream" },
+    "expand": { "type": "array", "items": { "type": "string" } },
+    "bundleName": { "type": "string", "description": "e.g. ORIGINAL, THUMBNAIL, CC-LICENSE." },
+    "description": { "type": ["string", "null"] },
+    "format": { "type": "string" },
+    "mimeType": { "type": "string" },
+    "sizeBytes": { "type": "integer" },
+    "parentObject": { "type": ["object", "null"] },
+    "retrieveLink": { "type": "string" },
+    "checkSum": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" },
+        "checkSumAlgorithm": { "type": "string" }
+      }
+    },
+    "sequenceId": { "type": "integer" },
+    "policies": { "type": ["array", "null"] },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type", "mimeType", "sizeBytes"]
+}

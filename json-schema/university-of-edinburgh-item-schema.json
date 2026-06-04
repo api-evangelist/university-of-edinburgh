@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://datashare.ed.ac.uk/schema/item.json",
+  "title": "Edinburgh DataShare Item",
+  "description": "A DSpace repository item as returned by the Edinburgh DataShare REST API /items endpoint.",
+  "type": "object",
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"], "description": "Persistent handle, e.g. 10283/5507." },
+    "type": { "type": "string", "const": "item" },
+    "expand": { "type": "array", "items": { "type": "string" } },
+    "lastModified": { "type": "string" },
+    "parentCollection": { "type": ["object", "null"] },
+    "parentCollectionList": { "type": ["array", "null"] },
+    "parentCommunityList": { "type": ["array", "null"] },
+    "metadata": {
+      "type": ["array", "null"],
+      "items": { "$ref": "#/$defs/metadataEntry" }
+    },
+    "bitstreams": {
+      "type": ["array", "null"],
+      "items": { "$ref": "#/$defs/bitstream" }
+    },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type", "handle"],
+  "$defs": {
+    "metadataEntry": {
+      "type": "object",
+      "properties": {
+        "key": { "type": "string" },
+        "value": { "type": "string" },
+        "language": { "type": ["string", "null"] },
+        "schema": { "type": "string" },
+        "element": { "type": "string" },
+        "qualifier": { "type": ["string", "null"] }
+      },
+      "required": ["key", "value"]
+    },
+    "bitstream": {
+      "type": "object",
+      "properties": {
+        "uuid": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "bundleName": { "type": "string" },
+        "format": { "type": "string" },
+        "mimeType": { "type": "string" },
+        "sizeBytes": { "type": "integer" },
+        "retrieveLink": { "type": "string" },
+        "sequenceId": { "type": "integer" },
+        "checkSum": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "string" },
+            "checkSumAlgorithm": { "type": "string" }
+          }
+        }
+      },
+      "required": ["uuid", "name"]
+    }
+  }
+}

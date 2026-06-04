@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://datashare.ed.ac.uk/structure/item.json",
+  "name": "DataShareItem",
+  "type": "object",
+  "description": "JSON Structure for an Edinburgh DataShare DSpace item.",
+  "properties": {
+    "uuid": { "type": "string" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"] },
+    "type": { "type": "string" },
+    "lastModified": { "type": "string" },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "name": "MetadataEntry",
+        "properties": {
+          "key": { "type": "string" },
+          "value": { "type": "string" },
+          "language": { "type": ["string", "null"] },
+          "schema": { "type": "string" },
+          "element": { "type": "string" },
+          "qualifier": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "bitstreams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "name": "Bitstream",
+        "properties": {
+          "uuid": { "type": "string" },
+          "name": { "type": "string" },
+          "bundleName": { "type": "string" },
+          "format": { "type": "string" },
+          "mimeType": { "type": "string" },
+          "sizeBytes": { "type": "int64" },
+          "retrieveLink": { "type": "string" },
+          "sequenceId": { "type": "int32" }
+        }
+      }
+    },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type"]
+}

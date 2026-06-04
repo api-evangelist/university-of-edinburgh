@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://datashare.ed.ac.uk/schema/community.json",
+  "title": "Edinburgh DataShare Community",
+  "description": "A DSpace community as returned by the Edinburgh DataShare REST API /communities endpoint.",
+  "type": "object",
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"] },
+    "type": { "type": "string", "const": "community" },
+    "expand": { "type": "array", "items": { "type": "string" } },
+    "logo": { "type": ["object", "null"] },
+    "parentCommunity": { "type": ["object", "null"] },
+    "copyrightText": { "type": "string" },
+    "introductoryText": { "type": "string" },
+    "shortDescription": { "type": "string" },
+    "sidebarText": { "type": "string" },
+    "countItems": { "type": "integer" },
+    "collections": { "type": "array" },
+    "subcommunities": { "type": "array" },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type", "handle"]
+}

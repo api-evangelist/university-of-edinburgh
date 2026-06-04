@@ -1,0 +1,55 @@
+extends: [[spectral:oas, off]]
+formats:
+  - oas3
+documentationUrl: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+rules:
+  datashare-info-contact:
+    description: API info should include a contact.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  datashare-https-server:
+    description: Servers must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+
+  datashare-operation-id:
+    description: Every operation should declare an operationId.
+    severity: warn
+    given: $.paths[*][get]
+    then:
+      field: operationId
+      function: truthy
+
+  datashare-object-has-uuid:
+    description: DSpace object schemas should expose a uuid property.
+    severity: warn
+    given: $.components.schemas[Community,Collection,Item,Bitstream].properties
+    then:
+      field: uuid
+      function: defined
+
+  datashare-uuid-path-params:
+    description: Resource id path parameters should be typed as uuid strings.
+    severity: warn
+    given: $.components.parameters[communityId,collectionId,itemId,bitstreamId].schema
+    then:
+      field: format
+      function: pattern
+      functionOptions:
+        match: '^uuid$'
+
+  datashare-read-only:
+    description: Public DataShare REST API is read-only; only GET operations are expected.
+    severity: error
+    given: $.paths[*]
+    then:
+      field: post
+      function: undefined

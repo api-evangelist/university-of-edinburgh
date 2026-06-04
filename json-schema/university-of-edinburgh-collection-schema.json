@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://datashare.ed.ac.uk/schema/collection.json",
+  "title": "Edinburgh DataShare Collection",
+  "description": "A DSpace collection as returned by the Edinburgh DataShare REST API /collections endpoint.",
+  "type": "object",
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": ["string", "null"] },
+    "type": { "type": "string", "const": "collection" },
+    "expand": { "type": "array", "items": { "type": "string" } },
+    "logo": { "type": ["object", "null"] },
+    "parentCommunity": { "type": ["object", "null"] },
+    "parentCommunityList": { "type": "array" },
+    "items": { "type": "array" },
+    "license": { "type": ["string", "null"] },
+    "copyrightText": { "type": "string" },
+    "introductoryText": { "type": "string" },
+    "shortDescription": { "type": "string" },
+    "sidebarText": { "type": "string" },
+    "numberItems": { "type": "integer" },
+    "link": { "type": "string" }
+  },
+  "required": ["uuid", "name", "type", "handle"]
+}

@@ -1,0 +1,63 @@
+vocabulary:
+  name: Edinburgh DataShare REST API Vocabulary
+  description: >-
+    Controlled vocabulary of the core domain terms exposed by the Edinburgh
+    DataShare DSpace 6 REST API, the University of Edinburgh's open-access
+    research-data repository.
+  version: "1.0.0"
+  terms:
+    - term: Community
+      definition: >-
+        Top-level or nested organisational grouping in DSpace (e.g. a College
+        or research centre) that contains collections and subcommunities.
+      tags: [object, dspace, hierarchy]
+    - term: Collection
+      definition: >-
+        A grouping of related items within a community; the container into
+        which items are deposited.
+      tags: [object, dspace, hierarchy]
+    - term: Item
+      definition: >-
+        The primary unit of deposit in the repository, consisting of metadata
+        and one or more bitstreams.
+      tags: [object, dspace, deposit]
+    - term: Bitstream
+      definition: >-
+        A binary file (data file, document, thumbnail or licence) attached to
+        an item, grouped into a bundle.
+      tags: [object, dspace, file]
+    - term: Bundle
+      definition: >-
+        A named grouping of bitstreams within an item, such as ORIGINAL,
+        THUMBNAIL or CC-LICENSE.
+      tags: [dspace, file]
+    - term: Handle
+      definition: >-
+        Persistent identifier assigned to communities, collections and items
+        (e.g. 10283/5507) under the Handle System.
+      tags: [identifier, persistence]
+    - term: MetadataEntry
+      definition: >-
+        A single qualified Dublin Core metadata statement on an item,
+        expressed as schema.element.qualifier with a value and language.
+      tags: [metadata, dublin-core]
+    - term: MetadataSchema
+      definition: >-
+        A registered namespace of metadata fields (e.g. the dc Dublin Core
+        schema) available in the repository registry.
+      tags: [metadata, registry]
+    - term: CheckSum
+      definition: >-
+        Integrity digest (value plus algorithm, typically MD5) recorded for a
+        bitstream.
+      tags: [file, integrity]
+    - term: ResourcePolicy
+      definition: >-
+        Authorisation rule controlling an action (e.g. READ) on a DSpace
+        resource for a given eperson or group.
+      tags: [authorization, policy]
+    - term: Expand
+      definition: >-
+        Query parameter requesting that optional related fields (such as
+        metadata, bitstreams or collections) be inlined in the response.
+      tags: [parameter, query]

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://datashare.ed.ac.uk/rest/communities/top-communities",
+    "headers": { "Accept": "application/json" }
+  },
+  "response": {
+    "uuid": "8babe078-28c5-4beb-afba-9b02a5d43d80",
+    "name": "College of Arts, Humanities & Social Sciences",
+    "handle": "10283/928",
+    "type": "community",
+    "expand": ["parentCommunity", "collections", "subCommunities", "logo", "all"],
+    "logo": null,
+    "parentCommunity": null,
+    "copyrightText": "",
+    "introductoryText": "<p>The College is home to over 70 research centres and institutes...</p>",
+    "shortDescription": "Bringing together the former faculties of Arts, Divinity, Education, Law, Music and Social Science",
+    "sidebarText": "",
+    "countItems": 4536,
+    "collections": [],
+    "link": "/rest/communities/8babe078-28c5-4beb-afba-9b02a5d43d80",
+    "subcommunities": []
+  }
+}
