@@ -96,6 +96,8 @@ apis:
       - type: Documentation
         url: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
 common:
+  - type: DomainSecurity
+    url: security/university-of-edinburgh-domain-security.yml
   - type: Website
     url: https://www.ed.ac.uk/
   - type: GitHub
