@@ -96,6 +96,8 @@ apis:
       - type: Documentation
         url: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
 common:
+  - type: AgenticAccess
+    url: agentic-access/university-of-edinburgh-agentic-access.yml
   - type: DomainSecurity
     url: security/university-of-edinburgh-domain-security.yml
   - type: Website
