@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare REST Bitstreams Status API
+  description: Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.
+  version: 6.x
+  contact:
+    name: Edinburgh DataShare
+    url: https://datashare.ed.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-6_x/LICENSE
+servers:
+- url: https://datashare.ed.ac.uk/rest
+  description: Edinburgh DataShare production REST endpoint
+tags:
+- name: Status
+  description: Service status
+paths:
+  /test:
+    get:
+      tags:
+      - Status
+      summary: Health check
+      description: Returns the string "REST api is running." for testing purposes.
+      operationId: getTest
+      responses:
+        '200':
+          description: Service is running.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: REST api is running.

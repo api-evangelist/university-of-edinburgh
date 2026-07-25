@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare REST Bitstreams Hierarchy API
+  description: Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.
+  version: 6.x
+  contact:
+    name: Edinburgh DataShare
+    url: https://datashare.ed.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-6_x/LICENSE
+servers:
+- url: https://datashare.ed.ac.uk/rest
+  description: Edinburgh DataShare production REST endpoint
+tags:
+- name: Hierarchy
+  description: Community/collection tree
+paths:
+  /hierarchy:
+    get:
+      tags:
+      - Hierarchy
+      summary: Get repository hierarchy
+      description: Return hierarchy of communities and collections in tree form. Each object is minimally populated (name, handle, id) for efficient retrieval.
+      operationId: getHierarchy
+      responses:
+        '200':
+          description: The community/collection hierarchy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyNode'
+components:
+  schemas:
+    HierarchyNode:
+      type: object
+      description: Minimally populated community/collection tree node.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        handle:
+          type: string
+        community:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyNode'
+        collection:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyNode'

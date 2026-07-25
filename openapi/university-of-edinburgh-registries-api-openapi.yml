@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare REST Bitstreams Registries API
+  description: Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.
+  version: 6.x
+  contact:
+    name: Edinburgh DataShare
+    url: https://datashare.ed.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-6_x/LICENSE
+servers:
+- url: https://datashare.ed.ac.uk/rest
+  description: Edinburgh DataShare production REST endpoint
+tags:
+- name: Registries
+  description: Metadata schema and field registry
+paths:
+  /registries/schema:
+    get:
+      tags:
+      - Registries
+      summary: List metadata schemas
+      description: Return the list of metadata schemas in the registry.
+      operationId: getSchemas
+      responses:
+        '200':
+          description: Array of metadata schemas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetadataSchema'
+  /registries/schema/{schemaPrefix}:
+    get:
+      tags:
+      - Registries
+      summary: Get metadata schema
+      description: Returns the specified metadata schema.
+      operationId: getSchema
+      parameters:
+      - name: schemaPrefix
+        in: path
+        required: true
+        description: Schema prefix (e.g. dc).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested metadata schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataSchema'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    MetadataField:
+      type: object
+      properties:
+        fieldId:
+          type: integer
+        name:
+          type: string
+        element:
+          type: string
+        qualifier:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        parentSchema:
+          type: integer
+          nullable: true
+        expand:
+          type: array
+          items:
+            type: string
+    MetadataSchema:
+      type: object
+      properties:
+        schemaID:
+          type: integer
+        prefix:
+          type: string
+          example: dc
+        namespace:
+          type: string
+        expand:
+          type: array
+          items:
+            type: string
+        metadataFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataField'
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string

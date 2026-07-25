@@ -1,0 +1,235 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare REST Bitstreams API
+  description: Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.
+  version: 6.x
+  contact:
+    name: Edinburgh DataShare
+    url: https://datashare.ed.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-6_x/LICENSE
+servers:
+- url: https://datashare.ed.ac.uk/rest
+  description: Edinburgh DataShare production REST endpoint
+tags:
+- name: Bitstreams
+  description: Binary files attached to items
+paths:
+  /bitstreams:
+    get:
+      tags:
+      - Bitstreams
+      summary: List bitstreams
+      description: Return all bitstreams in DSpace.
+      operationId: getBitstreams
+      parameters:
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Array of bitstreams.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bitstream'
+  /bitstreams/{bitstreamId}:
+    get:
+      tags:
+      - Bitstreams
+      summary: Get bitstream
+      description: Return the specified bitstream.
+      operationId: getBitstream
+      parameters:
+      - $ref: '#/components/parameters/bitstreamId'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested bitstream.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bitstream'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /bitstreams/{bitstreamId}/policy:
+    get:
+      tags:
+      - Bitstreams
+      summary: Get bitstream policies
+      description: Return policies of the specified bitstream.
+      operationId: getBitstreamPolicy
+      parameters:
+      - $ref: '#/components/parameters/bitstreamId'
+      responses:
+        '200':
+          description: Array of resource policies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcePolicy'
+  /bitstreams/{bitstreamId}/retrieve:
+    get:
+      tags:
+      - Bitstreams
+      summary: Retrieve bitstream content
+      description: Return the contents (raw bytes) of the specified bitstream.
+      operationId: retrieveBitstream
+      parameters:
+      - $ref: '#/components/parameters/bitstreamId'
+      responses:
+        '200':
+          description: The binary contents of the bitstream.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Offset into the result set for pagination.
+      schema:
+        type: integer
+        default: 0
+    bitstreamId:
+      name: bitstreamId
+      in: path
+      required: true
+      description: UUID of the bitstream.
+      schema:
+        type: string
+        format: uuid
+    expand:
+      name: expand
+      in: query
+      required: false
+      description: Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all).
+      schema:
+        type: string
+      example: metadata,bitstreams
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 100
+  schemas:
+    Bitstream:
+      allOf:
+      - $ref: '#/components/schemas/DSpaceObject'
+      - type: object
+        properties:
+          bundleName:
+            type: string
+            description: Bundle the bitstream belongs to (e.g. ORIGINAL, THUMBNAIL, CC-LICENSE).
+          description:
+            type: string
+            nullable: true
+          format:
+            type: string
+            description: Human-readable format label (e.g. JPEG).
+          mimeType:
+            type: string
+          sizeBytes:
+            type: integer
+            format: int64
+          parentObject:
+            type: object
+            nullable: true
+          retrieveLink:
+            type: string
+          checkSum:
+            $ref: '#/components/schemas/CheckSum'
+          sequenceId:
+            type: integer
+          policies:
+            type: array
+            nullable: true
+            items:
+              $ref: '#/components/schemas/ResourcePolicy'
+    CheckSum:
+      type: object
+      properties:
+        value:
+          type: string
+        checkSumAlgorithm:
+          type: string
+          example: MD5
+    DSpaceObject:
+      type: object
+      description: Common fields shared by all DSpace REST objects.
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        handle:
+          type: string
+          nullable: true
+          description: Persistent handle identifier (e.g. 10283/928).
+        type:
+          type: string
+          enum:
+          - community
+          - collection
+          - item
+          - bitstream
+        expand:
+          type: array
+          items:
+            type: string
+        link:
+          type: string
+          description: Relative REST link to this object.
+    ResourcePolicy:
+      type: object
+      properties:
+        id:
+          type: integer
+        action:
+          type: string
+        epersonId:
+          type: integer
+        groupId:
+          type: integer
+        resourceId:
+          type: integer
+        resourceType:
+          type: string
+        rpDescription:
+          type: string
+          nullable: true
+        rpName:
+          type: string
+          nullable: true
+        rpType:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+          nullable: true
+        endDate:
+          type: string
+          nullable: true
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
