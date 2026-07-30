@@ -13,9 +13,21 @@ description: >-
   Timetabling, Staff) that is documented behind SSO and not publicly
   accessible.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-edinburgh.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-edinburgh/refs/heads/main/apis.yml
 tags:
   - Education
@@ -31,70 +43,235 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: university-of-edinburgh:datashare-rest
-    name: Edinburgh DataShare REST API
-    description: >-
-      Public DSpace REST API for Edinburgh DataShare, the University's
-      open-access research-data repository. Allows programmatic querying of
-      communities, collections, items and bitstreams. Returns JSON.
-    humanURL: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
-    baseURL: https://datashare.ed.ac.uk/rest
-    tags: [ Research Data, Repository, DSpace, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
-      - type: OpenAPI
-        url: openapi/university-of-edinburgh-datashare-rest.yaml
-      - type: JSONSchema
-        url: json-schema/university-of-edinburgh-item-schema.json
-      - type: x-json-structure
-        url: json-structure/university-of-edinburgh-item-structure.json
-      - type: x-examples
-        url: examples/university-of-edinburgh-getItem-example.json
-      - type: x-spectral-rules
-        url: rules/university-of-edinburgh-rules.yml
-      - type: x-vocabulary
-        url: vocabulary/university-of-edinburgh-vocabulary.yml
-      - type: x-json-ld-context
-        url: json-ld/university-of-edinburgh-context.jsonld
-  - aid: university-of-edinburgh:datashare-oai
-    name: Edinburgh DataShare OAI-PMH
-    description: >-
-      Public OAI-PMH metadata harvesting endpoint for Edinburgh DataShare,
-      exposing Dublin Core and other metadata formats for the University's
-      research-data repository.
-    humanURL: https://datashare.ed.ac.uk/
-    baseURL: https://datashare.ed.ac.uk/oai/request
-    tags: [ OAI-PMH, Metadata, Repository, Research Data ]
-    properties:
-      - type: Documentation
-        url: https://datashare.ed.ac.uk/oai/request?verb=Identify
-  - aid: university-of-edinburgh:pure-oai
-    name: Edinburgh Research Explorer (Pure) OAI-PMH
-    description: >-
-      Public OAI-PMH endpoint for the University's Pure research information
-      system, surfaced publicly via Edinburgh Research Explorer. Supports
-      harvesting of research-output metadata in multiple formats. Pure also
-      offers SOAP and REST web services, but developer access to those is
-      gated and granted case by case.
-    humanURL: https://www.research.ed.ac.uk/
-    baseURL: https://www.pure.ed.ac.uk/ws/oai
-    tags: [ OAI-PMH, Metadata, Research Outputs, CRIS ]
-    properties:
-      - type: Documentation
-        url: https://www.pure.ed.ac.uk/ws/oai?verb=Identify
-  - aid: university-of-edinburgh:enterprise-apis
-    name: Enterprise APIs Programme (gated)
-    description: >-
-      The University's internal Enterprise APIs programme delivers Student
-      Records, Timetabling and Staff APIs to support service integration.
-      Documentation sits behind University SSO (Shibboleth/SAML) and these
-      APIs are not publicly accessible; listed here for completeness only.
-    humanURL: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
-    tags: [ Enterprise, Integration, Gated, Internal ]
-    properties:
-      - type: Documentation
-        url: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
+- aid: university-of-edinburgh:datashare-oai
+  name: Edinburgh DataShare OAI-PMH
+  description: >-
+    Public OAI-PMH metadata harvesting endpoint for Edinburgh DataShare, exposing Dublin Core and other
+    metadata formats for the University's research-data repository.
+  humanURL: https://datashare.ed.ac.uk/
+  baseURL: https://datashare.ed.ac.uk/oai/request
+  tags:
+  - OAI-PMH
+  - Metadata
+  - Repository
+  - Research Data
+  properties:
+  - type: Documentation
+    url: https://datashare.ed.ac.uk/oai/request?verb=Identify
+- aid: university-of-edinburgh:pure-oai
+  name: Edinburgh Research Explorer (Pure) OAI-PMH
+  description: >-
+    Public OAI-PMH endpoint for the University's Pure research information system, surfaced publicly via
+    Edinburgh Research Explorer. Supports harvesting of research-output metadata in multiple formats.
+    Pure also offers SOAP and REST web services, but developer access to those is gated and granted case
+    by case.
+  humanURL: https://www.research.ed.ac.uk/
+  baseURL: https://www.pure.ed.ac.uk/ws/oai
+  tags:
+  - OAI-PMH
+  - Metadata
+  - Research Outputs
+  - CRIS
+  properties:
+  - type: Documentation
+    url: https://www.pure.ed.ac.uk/ws/oai?verb=Identify
+- aid: university-of-edinburgh:enterprise-apis
+  name: Enterprise APIs Programme (gated)
+  description: >-
+    The University's internal Enterprise APIs programme delivers Student Records, Timetabling and Staff
+    APIs to support service integration. Documentation sits behind University SSO (Shibboleth/SAML) and
+    these APIs are not publicly accessible; listed here for completeness only.
+  humanURL: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
+  tags:
+  - Enterprise
+  - Integration
+  - Gated
+  - Internal
+  properties:
+  - type: Documentation
+    url: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
+- aid: university-of-edinburgh:university-of-edinburgh-bitstreams-api
+  name: University of Edinburgh Bitstreams API
+  description: Binary files attached to items
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Bitstreams
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-bitstreams-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-collections-api
+  name: University of Edinburgh Collections API
+  description: Collections of items
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-collections-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-communities-api
+  name: University of Edinburgh Communities API
+  description: Top-level and nested communities
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Communities
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-communities-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-hierarchy-api
+  name: University of Edinburgh Hierarchy API
+  description: Community/collection tree
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Hierarchy
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-hierarchy-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-items-api
+  name: University of Edinburgh Items API
+  description: Repository items and their metadata/bitstreams
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-items-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-registries-api
+  name: University of Edinburgh Registries API
+  description: Metadata schema and field registry
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Registries
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-registries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+- aid: university-of-edinburgh:university-of-edinburgh-status-api
+  name: University of Edinburgh Status API
+  description: Service status
+  humanURL: >-
+    https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  baseURL: https://datashare.ed.ac.uk/rest
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-status-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-item-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-edinburgh-item-structure.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-getItem-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/university-of-edinburgh-agentic-access.yml
