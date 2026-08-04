@@ -1,0 +1,26 @@
+{
+  "provider": "university-of-edinburgh",
+  "sources": [
+    "university-of-edinburgh-bitstreams-api-openapi.yml",
+    "university-of-edinburgh-collections-api-openapi.yml",
+    "university-of-edinburgh-communities-api-openapi.yml",
+    "university-of-edinburgh-hierarchy-api-openapi.yml",
+    "university-of-edinburgh-items-api-openapi.yml",
+    "university-of-edinburgh-registries-api-openapi.yml",
+    "university-of-edinburgh-status-api-openapi.yml"
+  ],
+  "outputs": [
+    "university-of-edinburgh-bitstreams-api-openapi.yml",
+    "university-of-edinburgh-collections-api-openapi.yml",
+    "university-of-edinburgh-communities-api-openapi.yml",
+    "university-of-edinburgh-hierarchy-api-openapi.yml",
+    "university-of-edinburgh-items-api-openapi.yml",
+    "university-of-edinburgh-registries-api-openapi.yml",
+    "university-of-edinburgh-status-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
