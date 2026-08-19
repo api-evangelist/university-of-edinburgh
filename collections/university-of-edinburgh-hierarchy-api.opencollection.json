@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Edinburgh DataShare REST Bitstreams Hierarchy API",
+    "version": "6.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hierarchy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get repository hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/hierarchy"
+          },
+          "docs": "Return hierarchy of communities and collections in tree form. Each object is minimally populated (name, handle, id) for efficient retrieval."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Edinburgh DataShare REST Bitstreams Registries API",
+    "version": "6.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List metadata schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/registries/schema"
+          },
+          "docs": "Return the list of metadata schemas in the registry."
+        },
+        {
+          "info": {
+            "name": "Get metadata schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/registries/schema/:schemaPrefix",
+            "params": [
+              {
+                "name": "schemaPrefix",
+                "value": "",
+                "type": "path",
+                "description": "Schema prefix (e.g. dc)."
+              }
+            ]
+          },
+          "docs": "Returns the specified metadata schema."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

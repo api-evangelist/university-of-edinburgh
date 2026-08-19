@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Edinburgh DataShare REST Bitstreams Communities API",
+    "version": "6.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Communities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List communities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/communities",
+            "params": [
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset into the result set for pagination."
+              }
+            ]
+          },
+          "docs": "Return an array of all communities in DSpace."
+        },
+        {
+          "info": {
+            "name": "List top-level communities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/communities/top-communities",
+            "params": [
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              }
+            ]
+          },
+          "docs": "Returns an array of all top-level communities in DSpace."
+        },
+        {
+          "info": {
+            "name": "Get community",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/communities/:communityId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the community."
+              },
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              }
+            ]
+          },
+          "docs": "Returns a community with the specified ID."
+        },
+        {
+          "info": {
+            "name": "List collections of a community",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/communities/:communityId/collections",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the community."
+              },
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              }
+            ]
+          },
+          "docs": "Returns an array of collections of the specified community."
+        },
+        {
+          "info": {
+            "name": "List subcommunities of a community",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/communities/:communityId/communities",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the community."
+              },
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              }
+            ]
+          },
+          "docs": "Returns an array of subcommunities of the specified community."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Edinburgh DataShare REST Bitstreams API",
+    "version": "6.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bitstreams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bitstreams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/bitstreams",
+            "params": [
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset into the result set for pagination."
+              }
+            ]
+          },
+          "docs": "Return all bitstreams in DSpace."
+        },
+        {
+          "info": {
+            "name": "Get bitstream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/bitstreams/:bitstreamId",
+            "params": [
+              {
+                "name": "bitstreamId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the bitstream."
+              },
+              {
+                "name": "expand",
+                "value": "metadata,bitstreams",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+              }
+            ]
+          },
+          "docs": "Return the specified bitstream."
+        },
+        {
+          "info": {
+            "name": "Get bitstream policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/bitstreams/:bitstreamId/policy",
+            "params": [
+              {
+                "name": "bitstreamId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the bitstream."
+              }
+            ]
+          },
+          "docs": "Return policies of the specified bitstream."
+        },
+        {
+          "info": {
+            "name": "Retrieve bitstream content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datashare.ed.ac.uk/rest/bitstreams/:bitstreamId/retrieve",
+            "params": [
+              {
+                "name": "bitstreamId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the bitstream."
+              }
+            ]
+          },
+          "docs": "Return the contents (raw bytes) of the specified bitstream."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

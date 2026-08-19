@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "0c0927a9-c95c-4df5-b02c-d1837c62bc83",
+      "name": "Status",
+      "description": {
+        "content": "Service status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c6ece00-9ef8-43de-b2bf-897404bdde60",
+          "name": "Health check",
+          "request": {
+            "name": "Health check",
+            "description": {
+              "content": "Returns the string \"REST api is running.\" for testing purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "128738bb-c633-4de5-8d29-f6c381dd9c98",
+              "name": "Service is running.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "REST api is running.",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datashare.ed.ac.uk/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a1ef96a-da62-40d5-b54c-37c685cff352",
+    "name": "Edinburgh DataShare REST Bitstreams Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.\n\nContact Support:\n Name: Edinburgh DataShare",
+      "type": "text/plain"
+    }
+  }
+}

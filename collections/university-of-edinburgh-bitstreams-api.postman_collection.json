@@ -1,0 +1,463 @@
+{
+  "item": [
+    {
+      "id": "d9d50798-4682-4895-a605-18acf799b96f",
+      "name": "Bitstreams",
+      "description": {
+        "content": "Binary files attached to items",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dcdbe643-5bc7-4841-854d-1aca5d33a121",
+          "name": "List bitstreams",
+          "request": {
+            "name": "List bitstreams",
+            "description": {
+              "content": "Return all bitstreams in DSpace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset into the result set for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b97c046-5eae-464d-891f-436063b27129",
+              "name": "Array of bitstreams.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"c042b069-41ba-cb9d-d2cc-4c16bac5e0fc\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"collection\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"bundleName\": \"string\",\n    \"description\": \"string\",\n    \"format\": \"string\",\n    \"mimeType\": \"string\",\n    \"sizeBytes\": 9409,\n    \"parentObject\": {},\n    \"retrieveLink\": \"string\",\n    \"checkSum\": {\n      \"value\": \"string\",\n      \"checkSumAlgorithm\": \"MD5\"\n    },\n    \"sequenceId\": 2936,\n    \"policies\": [\n      {\n        \"id\": 4960,\n        \"action\": \"string\",\n        \"epersonId\": 2807,\n        \"groupId\": 9617,\n        \"resourceId\": 4882,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      {\n        \"id\": 2591,\n        \"action\": \"string\",\n        \"epersonId\": 4056,\n        \"groupId\": 2207,\n        \"resourceId\": 1072,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      }\n    ]\n  },\n  {\n    \"uuid\": \"9fbd488b-d041-be6d-b415-78a2c53b5540\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"item\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"bundleName\": \"string\",\n    \"description\": \"string\",\n    \"format\": \"string\",\n    \"mimeType\": \"string\",\n    \"sizeBytes\": 4068,\n    \"parentObject\": {},\n    \"retrieveLink\": \"string\",\n    \"checkSum\": {\n      \"value\": \"string\",\n      \"checkSumAlgorithm\": \"MD5\"\n    },\n    \"sequenceId\": 6061,\n    \"policies\": [\n      {\n        \"id\": 9060,\n        \"action\": \"string\",\n        \"epersonId\": 3392,\n        \"groupId\": 3762,\n        \"resourceId\": 6571,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      {\n        \"id\": 761,\n        \"action\": \"string\",\n        \"epersonId\": 7467,\n        \"groupId\": 1172,\n        \"resourceId\": 411,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47368d47-0abe-49ef-b89d-1a4713960178",
+          "name": "Get bitstream",
+          "request": {
+            "name": "Get bitstream",
+            "description": {
+              "content": "Return the specified bitstream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstreamId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bitstreamId",
+                  "description": "(Required) UUID of the bitstream."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04ad1da4-d00a-40e3-a3bf-8dfad0c02f67",
+              "name": "The requested bitstream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstreamId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bitstreamId",
+                      "description": "(Required) UUID of the bitstream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"32353288-cad3-cbe6-bb81-3234348ae460\",\n  \"name\": \"string\",\n  \"handle\": \"string\",\n  \"type\": \"bitstream\",\n  \"expand\": [\n    \"string\",\n    \"string\"\n  ],\n  \"link\": \"string\",\n  \"bundleName\": \"string\",\n  \"description\": \"string\",\n  \"format\": \"string\",\n  \"mimeType\": \"string\",\n  \"sizeBytes\": 4986,\n  \"parentObject\": {},\n  \"retrieveLink\": \"string\",\n  \"checkSum\": {\n    \"value\": \"string\",\n    \"checkSumAlgorithm\": \"MD5\"\n  },\n  \"sequenceId\": 1864,\n  \"policies\": [\n    {\n      \"id\": 1083,\n      \"action\": \"string\",\n      \"epersonId\": 7174,\n      \"groupId\": 1646,\n      \"resourceId\": 7350,\n      \"resourceType\": \"string\",\n      \"rpDescription\": \"string\",\n      \"rpName\": \"string\",\n      \"rpType\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\"\n    },\n    {\n      \"id\": 7085,\n      \"action\": \"string\",\n      \"epersonId\": 9316,\n      \"groupId\": 9043,\n      \"resourceId\": 6384,\n      \"resourceType\": \"string\",\n      \"rpDescription\": \"string\",\n      \"rpName\": \"string\",\n      \"rpType\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7b5d480-1c5c-454f-94af-755d96cd1270",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstreamId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bitstreamId",
+                      "description": "(Required) UUID of the bitstream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f60eafe-130e-4a1b-b447-0cb2a2c5074b",
+          "name": "Get bitstream policies",
+          "request": {
+            "name": "Get bitstream policies",
+            "description": {
+              "content": "Return policies of the specified bitstream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstreamId",
+                "policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bitstreamId",
+                  "description": "(Required) UUID of the bitstream."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55aefcd5-59c7-41bc-a0af-89b3398246d8",
+              "name": "Array of resource policies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstreamId",
+                    "policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bitstreamId",
+                      "description": "(Required) UUID of the bitstream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3125,\n    \"action\": \"string\",\n    \"epersonId\": 7658,\n    \"groupId\": 9430,\n    \"resourceId\": 1597,\n    \"resourceType\": \"string\",\n    \"rpDescription\": \"string\",\n    \"rpName\": \"string\",\n    \"rpType\": \"string\",\n    \"startDate\": \"string\",\n    \"endDate\": \"string\"\n  },\n  {\n    \"id\": 58,\n    \"action\": \"string\",\n    \"epersonId\": 5372,\n    \"groupId\": 3597,\n    \"resourceId\": 7689,\n    \"resourceType\": \"string\",\n    \"rpDescription\": \"string\",\n    \"rpName\": \"string\",\n    \"rpType\": \"string\",\n    \"startDate\": \"string\",\n    \"endDate\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68c4f3b6-3454-4e29-8e94-1ef5e7197917",
+          "name": "Retrieve bitstream content",
+          "request": {
+            "name": "Retrieve bitstream content",
+            "description": {
+              "content": "Return the contents (raw bytes) of the specified bitstream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstreamId",
+                "retrieve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bitstreamId",
+                  "description": "(Required) UUID of the bitstream."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "884606d5-f0ef-4b9a-97f0-60906b0fd306",
+              "name": "The binary contents of the bitstream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstreamId",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bitstreamId",
+                      "description": "(Required) UUID of the bitstream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datashare.ed.ac.uk/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a5a474a-ccfb-44d8-bd44-3e974e62a743",
+    "name": "Edinburgh DataShare REST Bitstreams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.\n\nContact Support:\n Name: Edinburgh DataShare",
+      "type": "text/plain"
+    }
+  }
+}

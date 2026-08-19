@@ -1,0 +1,475 @@
+{
+  "item": [
+    {
+      "id": "e53a3965-61d6-42eb-bf60-af594b27e3be",
+      "name": "Items",
+      "description": {
+        "content": "Repository items and their metadata/bitstreams",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c223b856-22a0-41f8-9f59-e5aefe1c513d",
+          "name": "List items",
+          "request": {
+            "name": "List items",
+            "description": {
+              "content": "Return a list of items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset into the result set for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47979471-12f9-4aef-a064-2665a8187205",
+              "name": "Array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"e911c58e-9e09-fe76-aa5c-f435a87d5dc3\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"item\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"lastModified\": \"string\",\n    \"parentCollection\": {\n      \"uuid\": \"08b3edac-5d02-a418-3528-0ac9e983e70d\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"community\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"bundleName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"format\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"mimeType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sizeBytes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentObject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"retrieveLink\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"policies\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"parentCommunity\": {\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"copyrightText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"introductoryText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shortDescription\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sidebarText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"countItems\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"collections\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"subcommunities\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"parentCommunityList\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"items\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n        }\n      ],\n      \"license\": \"string\",\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"numberItems\": 4926\n    },\n    \"parentCollectionList\": [\n      {\n        \"uuid\": \"15467176-2279-8691-0cd3-43c6586955cb\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"community\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          }\n        ],\n        \"license\": \"string\",\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"numberItems\": 1367\n      },\n      {\n        \"uuid\": \"9708347d-e2a3-6e54-54be-83049cc691d7\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"community\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          }\n        ],\n        \"license\": \"string\",\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"numberItems\": 7341\n      }\n    ],\n    \"parentCommunityList\": [\n      {\n        \"uuid\": \"9196dc25-4823-fecd-ec89-809320dbb1fa\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"bitstream\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 6860,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"7e64d9a4-4b17-f1d7-3ed6-4552377ea479\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"collection\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 2332,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": [\n      {\n        \"key\": \"dc.contributor.author\",\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"schema\": \"dc\",\n        \"element\": \"contributor\",\n        \"qualifier\": \"string\"\n      },\n      {\n        \"key\": \"dc.contributor.author\",\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"schema\": \"dc\",\n        \"element\": \"contributor\",\n        \"qualifier\": \"string\"\n      }\n    ],\n    \"bitstreams\": [\n      {\n        \"uuid\": \"705dd1a5-7318-8747-da0f-f8010bb09e87\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"community\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 7081,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"checkSumAlgorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sequenceId\": 2810,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"c0db8337-06f8-4337-3b26-367343017465\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"collection\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 1491,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"checkSumAlgorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sequenceId\": 6609,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"archived\": \"string\",\n    \"withdrawn\": \"string\"\n  },\n  {\n    \"uuid\": \"e2deebc0-3f63-c8a2-d1e2-2e22293db738\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"community\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"lastModified\": \"string\",\n    \"parentCollection\": {\n      \"uuid\": \"32157428-ba9f-607a-e4ae-67960595d93c\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"item\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"bundleName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"format\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"mimeType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sizeBytes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentObject\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"retrieveLink\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"policies\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"parentCommunity\": {\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"copyrightText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"introductoryText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shortDescription\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sidebarText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"countItems\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"collections\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"subcommunities\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"parentCommunityList\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"items\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n        }\n      ],\n      \"license\": \"string\",\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"numberItems\": 2668\n    },\n    \"parentCollectionList\": [\n      {\n        \"uuid\": \"541c9083-440e-21c6-4924-b1e9e5f6d61b\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"collection\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          }\n        ],\n        \"license\": \"string\",\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"numberItems\": 3373\n      },\n      {\n        \"uuid\": \"9151a6cd-e2fa-5551-979f-4477eb802918\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"item\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n          }\n        ],\n        \"license\": \"string\",\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"numberItems\": 4553\n      }\n    ],\n    \"parentCommunityList\": [\n      {\n        \"uuid\": \"b4cccbff-3a9b-b44b-115f-80dec2d7247f\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"community\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 2940,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"8a9a4b18-9e3b-4caf-b2be-f88e8a7687de\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"collection\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 4106,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": [\n      {\n        \"key\": \"dc.contributor.author\",\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"schema\": \"dc\",\n        \"element\": \"contributor\",\n        \"qualifier\": \"string\"\n      },\n      {\n        \"key\": \"dc.contributor.author\",\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"schema\": \"dc\",\n        \"element\": \"contributor\",\n        \"qualifier\": \"string\"\n      }\n    ],\n    \"bitstreams\": [\n      {\n        \"uuid\": \"a0872214-1038-5e9b-408c-8a2cf26c9c18\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"community\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 4575,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"checkSumAlgorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sequenceId\": 7874,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"94293da8-b35e-a394-8fa8-771d800a38a2\",\n        \"name\": \"string\",\n        \"handle\": \"string\",\n        \"type\": \"item\",\n        \"expand\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"link\": \"string\",\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 5759,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"checkSumAlgorithm\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sequenceId\": 7000,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"archived\": \"string\",\n    \"withdrawn\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a358a3d2-4be8-4297-90d3-0de0044b494b",
+          "name": "Get item",
+          "request": {
+            "name": "Get item",
+            "description": {
+              "content": "Return the specified item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":itemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "itemId",
+                  "description": "(Required) UUID of the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb001ba1-e11d-438a-98ea-3e2c0f68d15e",
+              "name": "The requested item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) UUID of the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"181b4474-2b49-8ee7-a983-2e8e28460138\",\n  \"name\": \"string\",\n  \"handle\": \"string\",\n  \"type\": \"item\",\n  \"expand\": [\n    \"string\",\n    \"string\"\n  ],\n  \"link\": \"string\",\n  \"lastModified\": \"string\",\n  \"parentCollection\": {\n    \"uuid\": \"3e560391-aed6-65aa-1bc3-2421c1ee5f0b\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"item\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"logo\": {\n      \"uuid\": \"f5f0f20a-4ea6-cd72-5618-af140a47199f\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"bitstream\",\n      \"expand\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"link\": \"string\",\n      \"bundleName\": \"string\",\n      \"description\": \"string\",\n      \"format\": \"string\",\n      \"mimeType\": \"string\",\n      \"sizeBytes\": 2602,\n      \"parentObject\": {},\n      \"retrieveLink\": \"string\",\n      \"checkSum\": {\n        \"value\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"checkSumAlgorithm\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"sequenceId\": 6071,\n      \"policies\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    \"parentCommunity\": {\n      \"uuid\": \"416edfba-aaf2-f6f6-0a3f-2b6bea88af9e\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"collection\",\n      \"expand\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"parentCommunity\": {\n        \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n      },\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"countItems\": 9883,\n      \"collections\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Collection detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Collection detected>\"\n        }\n      ],\n      \"subcommunities\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        }\n      ]\n    },\n    \"parentCommunityList\": [\n      {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 8917,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 506,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"items\": [\n      {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastModified\": \"string\",\n        \"parentCollection\": {\n          \"value\": \"<Circular reference to #/components/schemas/Collection detected>\"\n        },\n        \"parentCollectionList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"metadata\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"bitstreams\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"archived\": \"string\",\n        \"withdrawn\": \"string\"\n      },\n      {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastModified\": \"string\",\n        \"parentCollection\": {\n          \"value\": \"<Circular reference to #/components/schemas/Collection detected>\"\n        },\n        \"parentCollectionList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"parentCommunityList\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"metadata\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"bitstreams\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"archived\": \"string\",\n        \"withdrawn\": \"string\"\n      }\n    ],\n    \"license\": \"string\",\n    \"copyrightText\": \"string\",\n    \"introductoryText\": \"string\",\n    \"shortDescription\": \"string\",\n    \"sidebarText\": \"string\",\n    \"numberItems\": 2866\n  },\n  \"parentCollectionList\": [\n    {\n      \"uuid\": \"c8500a05-d7bf-0368-bb4e-ee9fe7abedcc\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"bitstream\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 3883,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": 2354,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunity\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 3032,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunityList\": [\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"collections\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subcommunities\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"collections\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subcommunities\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"items\": [\n        {\n          \"lastModified\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollectionList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"bitstreams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"archived\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"withdrawn\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"lastModified\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollectionList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"bitstreams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"archived\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"withdrawn\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"license\": \"string\",\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"numberItems\": 7100\n    },\n    {\n      \"uuid\": \"3ea3a85c-232d-b97b-52d7-d7bc933ce4cf\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"collection\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 4560,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": 2931,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunity\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parentCommunity\": {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        \"copyrightText\": \"string\",\n        \"introductoryText\": \"string\",\n        \"shortDescription\": \"string\",\n        \"sidebarText\": \"string\",\n        \"countItems\": 7422,\n        \"collections\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"subcommunities\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunityList\": [\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"collections\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subcommunities\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"collections\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subcommunities\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"items\": [\n        {\n          \"lastModified\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollectionList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"bitstreams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"archived\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"withdrawn\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"lastModified\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCollectionList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"bitstreams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"archived\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"withdrawn\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"license\": \"string\",\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"numberItems\": 1299\n    }\n  ],\n  \"parentCommunityList\": [\n    {\n      \"uuid\": \"2b976684-0ebf-1b24-3e0d-374cf54a081d\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"collection\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 3071,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": 2614,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunity\": {\n        \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n      },\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"countItems\": 2442,\n      \"collections\": [\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"items\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"items\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"subcommunities\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        }\n      ]\n    },\n    {\n      \"uuid\": \"1a1cfbfe-def4-a1ec-53b4-60ca3f669120\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"item\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"logo\": {\n        \"uuid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"handle\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"expand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"link\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bundleName\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"mimeType\": \"string\",\n        \"sizeBytes\": 6423,\n        \"parentObject\": {},\n        \"retrieveLink\": \"string\",\n        \"checkSum\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"sequenceId\": 4936,\n        \"policies\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"parentCommunity\": {\n        \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n      },\n      \"copyrightText\": \"string\",\n      \"introductoryText\": \"string\",\n      \"shortDescription\": \"string\",\n      \"sidebarText\": \"string\",\n      \"countItems\": 9887,\n      \"collections\": [\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"items\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"logo\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentCommunityList\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"items\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"copyrightText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"introductoryText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shortDescription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sidebarText\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberItems\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"subcommunities\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Community detected>\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": [\n    {\n      \"key\": \"dc.contributor.author\",\n      \"value\": \"string\",\n      \"language\": \"string\",\n      \"schema\": \"dc\",\n      \"element\": \"contributor\",\n      \"qualifier\": \"string\"\n    },\n    {\n      \"key\": \"dc.contributor.author\",\n      \"value\": \"string\",\n      \"language\": \"string\",\n      \"schema\": \"dc\",\n      \"element\": \"contributor\",\n      \"qualifier\": \"string\"\n    }\n  ],\n  \"bitstreams\": [\n    {\n      \"uuid\": \"b004d8dd-95ab-c031-d98b-8804bcb93108\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"item\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"bundleName\": \"string\",\n      \"description\": \"string\",\n      \"format\": \"string\",\n      \"mimeType\": \"string\",\n      \"sizeBytes\": 8932,\n      \"parentObject\": {},\n      \"retrieveLink\": \"string\",\n      \"checkSum\": {\n        \"value\": \"string\",\n        \"checkSumAlgorithm\": \"MD5\"\n      },\n      \"sequenceId\": 829,\n      \"policies\": [\n        {\n          \"id\": 2523,\n          \"action\": \"string\",\n          \"epersonId\": 7634,\n          \"groupId\": 6187,\n          \"resourceId\": 5303,\n          \"resourceType\": \"string\",\n          \"rpDescription\": \"string\",\n          \"rpName\": \"string\",\n          \"rpType\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\"\n        },\n        {\n          \"id\": 1963,\n          \"action\": \"string\",\n          \"epersonId\": 5194,\n          \"groupId\": 7915,\n          \"resourceId\": 4334,\n          \"resourceType\": \"string\",\n          \"rpDescription\": \"string\",\n          \"rpName\": \"string\",\n          \"rpType\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\"\n        }\n      ]\n    },\n    {\n      \"uuid\": \"dad69e1c-7563-4964-1b92-2ed3c89d206e\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"type\": \"community\",\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"string\",\n      \"bundleName\": \"string\",\n      \"description\": \"string\",\n      \"format\": \"string\",\n      \"mimeType\": \"string\",\n      \"sizeBytes\": 9052,\n      \"parentObject\": {},\n      \"retrieveLink\": \"string\",\n      \"checkSum\": {\n        \"value\": \"string\",\n        \"checkSumAlgorithm\": \"MD5\"\n      },\n      \"sequenceId\": 5222,\n      \"policies\": [\n        {\n          \"id\": 3084,\n          \"action\": \"string\",\n          \"epersonId\": 2207,\n          \"groupId\": 9743,\n          \"resourceId\": 9374,\n          \"resourceType\": \"string\",\n          \"rpDescription\": \"string\",\n          \"rpName\": \"string\",\n          \"rpType\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\"\n        },\n        {\n          \"id\": 7898,\n          \"action\": \"string\",\n          \"epersonId\": 6773,\n          \"groupId\": 379,\n          \"resourceId\": 1511,\n          \"resourceType\": \"string\",\n          \"rpDescription\": \"string\",\n          \"rpName\": \"string\",\n          \"rpType\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"archived\": \"string\",\n  \"withdrawn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "012a53bb-5a8b-4b8c-b2b3-8c408ba17ea2",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) UUID of the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e6722df-4a42-432c-9341-2d306648ea70",
+          "name": "Get item metadata",
+          "request": {
+            "name": "Get item metadata",
+            "description": {
+              "content": "Return metadata of the specified item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":itemId",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "itemId",
+                  "description": "(Required) UUID of the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae2fafe8-3c0f-4eda-9067-6da472da2192",
+              "name": "Array of metadata entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":itemId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) UUID of the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key\": \"dc.contributor.author\",\n    \"value\": \"string\",\n    \"language\": \"string\",\n    \"schema\": \"dc\",\n    \"element\": \"contributor\",\n    \"qualifier\": \"string\"\n  },\n  {\n    \"key\": \"dc.contributor.author\",\n    \"value\": \"string\",\n    \"language\": \"string\",\n    \"schema\": \"dc\",\n    \"element\": \"contributor\",\n    \"qualifier\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2e755a0-4ba9-4bdb-b366-8332394864f9",
+          "name": "Get item bitstreams",
+          "request": {
+            "name": "Get item bitstreams",
+            "description": {
+              "content": "Return bitstreams of the specified item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":itemId",
+                "bitstreams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of optional fields to expand in the response (e.g. metadata, bitstreams, collections, parentCommunity, all)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "itemId",
+                  "description": "(Required) UUID of the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "794f74e3-e30a-4d2f-b8d3-b4eeaccfc34d",
+              "name": "Array of bitstreams.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":itemId",
+                    "bitstreams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "metadata,bitstreams"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) UUID of the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"fec90a68-80c0-a859-07ed-3ecda27b5abd\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"community\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"bundleName\": \"string\",\n    \"description\": \"string\",\n    \"format\": \"string\",\n    \"mimeType\": \"string\",\n    \"sizeBytes\": 965,\n    \"parentObject\": {},\n    \"retrieveLink\": \"string\",\n    \"checkSum\": {\n      \"value\": \"string\",\n      \"checkSumAlgorithm\": \"MD5\"\n    },\n    \"sequenceId\": 6862,\n    \"policies\": [\n      {\n        \"id\": 7987,\n        \"action\": \"string\",\n        \"epersonId\": 6687,\n        \"groupId\": 5627,\n        \"resourceId\": 7891,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      {\n        \"id\": 6889,\n        \"action\": \"string\",\n        \"epersonId\": 713,\n        \"groupId\": 8891,\n        \"resourceId\": 5491,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      }\n    ]\n  },\n  {\n    \"uuid\": \"ca7fcfc1-7f07-bfa3-55ce-bb7aa56a14f8\",\n    \"name\": \"string\",\n    \"handle\": \"string\",\n    \"type\": \"collection\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"link\": \"string\",\n    \"bundleName\": \"string\",\n    \"description\": \"string\",\n    \"format\": \"string\",\n    \"mimeType\": \"string\",\n    \"sizeBytes\": 9537,\n    \"parentObject\": {},\n    \"retrieveLink\": \"string\",\n    \"checkSum\": {\n      \"value\": \"string\",\n      \"checkSumAlgorithm\": \"MD5\"\n    },\n    \"sequenceId\": 6511,\n    \"policies\": [\n      {\n        \"id\": 3386,\n        \"action\": \"string\",\n        \"epersonId\": 5793,\n        \"groupId\": 5779,\n        \"resourceId\": 7510,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      {\n        \"id\": 3120,\n        \"action\": \"string\",\n        \"epersonId\": 791,\n        \"groupId\": 7604,\n        \"resourceId\": 550,\n        \"resourceType\": \"string\",\n        \"rpDescription\": \"string\",\n        \"rpName\": \"string\",\n        \"rpType\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datashare.ed.ac.uk/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7f7ec6f-8a67-469d-94e4-039164fca127",
+    "name": "Edinburgh DataShare REST Bitstreams Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.\n\nContact Support:\n Name: Edinburgh DataShare",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "3dc1b5e7-17e3-4e20-a363-80e57f811b1a",
+      "name": "Hierarchy",
+      "description": {
+        "content": "Community/collection tree",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dea0bef6-56bc-4dfc-ad34-ba66f8235e98",
+          "name": "Get repository hierarchy",
+          "request": {
+            "name": "Get repository hierarchy",
+            "description": {
+              "content": "Return hierarchy of communities and collections in tree form. Each object is minimally populated (name, handle, id) for efficient retrieval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hierarchy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46461f3b-7814-4669-b436-a4d3f2adcfa5",
+              "name": "The community/collection hierarchy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hierarchy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"handle\": \"string\",\n  \"community\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"community\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ],\n      \"collection\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"community\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ],\n      \"collection\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ]\n    }\n  ],\n  \"collection\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"community\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ],\n      \"collection\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"handle\": \"string\",\n      \"community\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ],\n      \"collection\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/HierarchyNode detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datashare.ed.ac.uk/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ae729617-0bc0-419c-8b33-fe9657181e24",
+    "name": "Edinburgh DataShare REST Bitstreams Hierarchy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.\n\nContact Support:\n Name: Edinburgh DataShare",
+      "type": "text/plain"
+    }
+  }
+}

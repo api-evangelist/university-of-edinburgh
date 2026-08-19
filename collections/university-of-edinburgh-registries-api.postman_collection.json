@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "134c0cb9-e4bc-4020-975e-5ccbfcc0d260",
+      "name": "Registries",
+      "description": {
+        "content": "Metadata schema and field registry",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3342cec-d90e-4645-b92b-f29a4ca7116a",
+          "name": "List metadata schemas",
+          "request": {
+            "name": "List metadata schemas",
+            "description": {
+              "content": "Return the list of metadata schemas in the registry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registries",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fee5cc1c-263a-4365-aa4a-a066b12f7c94",
+              "name": "Array of metadata schemas.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registries",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"schemaID\": 5569,\n    \"prefix\": \"dc\",\n    \"namespace\": \"string\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadataFields\": [\n      {\n        \"fieldId\": 5648,\n        \"name\": \"string\",\n        \"element\": \"string\",\n        \"qualifier\": \"string\",\n        \"description\": \"string\",\n        \"parentSchema\": 433,\n        \"expand\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"fieldId\": 1439,\n        \"name\": \"string\",\n        \"element\": \"string\",\n        \"qualifier\": \"string\",\n        \"description\": \"string\",\n        \"parentSchema\": 4723,\n        \"expand\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"schemaID\": 4924,\n    \"prefix\": \"dc\",\n    \"namespace\": \"string\",\n    \"expand\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadataFields\": [\n      {\n        \"fieldId\": 6826,\n        \"name\": \"string\",\n        \"element\": \"string\",\n        \"qualifier\": \"string\",\n        \"description\": \"string\",\n        \"parentSchema\": 6116,\n        \"expand\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"fieldId\": 1805,\n        \"name\": \"string\",\n        \"element\": \"string\",\n        \"qualifier\": \"string\",\n        \"description\": \"string\",\n        \"parentSchema\": 8576,\n        \"expand\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36b4027c-70c2-4c21-8e10-d94760f99159",
+          "name": "Get metadata schema",
+          "request": {
+            "name": "Get metadata schema",
+            "description": {
+              "content": "Returns the specified metadata schema.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registries",
+                "schema",
+                ":schemaPrefix"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaPrefix",
+                  "description": "(Required) Schema prefix (e.g. dc)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3652c4c0-ab87-4bf8-87eb-2cb09faa1d32",
+              "name": "The requested metadata schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registries",
+                    "schema",
+                    ":schemaPrefix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaPrefix",
+                      "description": "(Required) Schema prefix (e.g. dc)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schemaID\": 5699,\n  \"prefix\": \"dc\",\n  \"namespace\": \"string\",\n  \"expand\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadataFields\": [\n    {\n      \"fieldId\": 957,\n      \"name\": \"string\",\n      \"element\": \"string\",\n      \"qualifier\": \"string\",\n      \"description\": \"string\",\n      \"parentSchema\": 7940,\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"fieldId\": 5261,\n      \"name\": \"string\",\n      \"element\": \"string\",\n      \"qualifier\": \"string\",\n      \"description\": \"string\",\n      \"parentSchema\": 9390,\n      \"expand\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d038792-0863-4df5-a4c4-2e5818591544",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registries",
+                    "schema",
+                    ":schemaPrefix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaPrefix",
+                      "description": "(Required) Schema prefix (e.g. dc)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datashare.ed.ac.uk/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "23765a5c-afbd-4973-939e-73ecee5bf4bb",
+    "name": "Edinburgh DataShare REST Bitstreams Registries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read-only DSpace 6 legacy REST API for Edinburgh DataShare, the University of Edinburgh's open-access research-data repository. Allows programmatic querying of communities, collections, items, bitstreams and the metadata/schema registry. Responses are JSON. This specification was reconstructed from the live API index at https://datashare.ed.ac.uk/rest and verified against live responses; only the documented public GET endpoints are described here.\n\nContact Support:\n Name: Edinburgh DataShare",
+      "type": "text/plain"
+    }
+  }
+}
