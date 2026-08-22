@@ -33,6 +33,28 @@
 > **Response times.** Acknowledgement within **one business day**; removal or restriction within
 > **two business days**; corrections and re-scores within **five business days**.
 >
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
 > **On a security or compliance team?** Email
 > [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
 > you will get a person, not a form. We will tell you exactly which public URLs this profile was
@@ -49,18 +71,36 @@ The University of Edinburgh is a public research university in Scotland, United 
 
 ## Type
 
-- Index / Consumer / 3rd-Party
+- university / Public Research University / Index / Provider / Public
 
 ## Tags
 
-Education, Higher Education, University, Research Data, Open Data, Repository, OAI-PMH, United Kingdom, Scotland
+University, Higher Education, Education, United Kingdom, Scotland, Russell Group, Research Repository, Open Data, Identity Federation, Research Computing, OAI-PMH, Artificial Intelligence
 
 ## APIs
 
-- **Edinburgh DataShare REST API** — DSpace REST API for the open-access research-data repository (JSON). Docs: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/ — Base: https://datashare.ed.ac.uk/rest
-- **Edinburgh DataShare OAI-PMH** — Metadata harvesting endpoint for the research-data repository. Docs: https://datashare.ed.ac.uk/oai/request?verb=Identify — Base: https://datashare.ed.ac.uk/oai/request
-- **Edinburgh Research Explorer (Pure) OAI-PMH** — Public OAI-PMH endpoint for the Pure research information system. Docs: https://www.pure.ed.ac.uk/ws/oai?verb=Identify — Base: https://www.pure.ed.ac.uk/ws/oai
-- **Enterprise APIs Programme (gated)** — Internal Student Records / Timetabling / Staff APIs, documented behind University SSO; not publicly accessible. Docs: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
+Every surface carries an `x-operator` recording **who runs the thing the contract describes**.
+Re-profiled 2026-08-19 against the operator axis.
+
+### Institution-operated
+
+- **Edinburgh DataShare REST API** — DSpace 8.3 REST API for the open-access research-data repository. Base: `https://datashare.ed.ac.uk/server/api`. Communities/collections/discovery readable anonymously; items and bitstreams return 401.
+- **Edinburgh DataShare OAI-PMH** — OAI-PMH 2.0, fully anonymous, 12 metadata prefixes including rioxx and uketd_dc. DataCite DOIs under 10.7488/ds. Base: `https://datashare.ed.ac.uk/server/oai`
+- **Edinburgh Research Archive (ERA) REST API** — a second DSpace 8.3 repository, for theses and publications. Base: `https://era.ed.ac.uk/server/api`
+- **Edinburgh Research Archive (ERA) OAI-PMH** — OAI-PMH 2.0, 13 prefixes including etdms. DOIs under 10.7488/era. Base: `https://era.ed.ac.uk/server/oai`
+- **EIDF Data Catalogue API** — CKAN 2.11.3 Action API for the Edinburgh International Data Facility, run by EPCC. Base: `https://catalogue.eidf.ac.uk/api/3/action`
+- **ELM — Edinburgh Language Models API** — OpenAI-compatible generative-AI gateway built by EDINA for UK tertiary education. Bearer auth, no public signup. Base: `https://elm.edina.ac.uk/api/v1`
+- **Shibboleth Identity Provider** — SAML 2.0 entity metadata published unauthenticated. entityID `https://idp.ed.ac.uk/shibboleth`
+- **Enterprise API Gateway (gated)** — WSO2 Choreo gateway at `https://api.ed.ac.uk`. Live, Edinburgh-operated, no public route or developer portal.
+
+### Tenant (institution's data, vendor's contract — not saved here)
+
+- **Edinburgh Research Explorer (Elsevier Pure)** — `https://www.research.ed.ac.uk/`. Pure's API contract belongs to Elsevier. Its OAI-PMH endpoint returned HTTP 500 on 2026-08-19.
+- **DiscoverEd Library Discovery (Ex Libris Primo)** — `https://discovered.ed.ac.uk/`
+
+### Retired
+
+- **Edinburgh DataShare DSpace 6 legacy `/rest` API** — now returns 404. Seven OpenAPI documents describing this endpoint were removed from this repository on 2026-08-19. The University library blog post documenting it is still live and still points at the dead API.
 
 ## Plans / Rate Limits / FinOps
 
@@ -71,7 +111,7 @@ Education, Higher Education, University, Research Data, Open Data, Repository, O
 ## Timestamps
 
 - Created: 2026-06-03
-- Modified: 2026-06-03
+- Modified: 2026-08-19
 
 ## Common Properties
 
