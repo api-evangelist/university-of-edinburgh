@@ -2,13 +2,20 @@
   "repo": "university-of-edinburgh",
   "feeds": [
     {
-      "source": "https://libraryblogs.is.ed.ac.uk/datablog/",
+      "source": "https://libraryblogs.is.ed.ac.uk/datablog/feed/",
       "feed_url": "https://libraryblogs.is.ed.ac.uk/datablog/feed/",
-      "title": "Edinburgh DataShare / Research Data Service DataBlog",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.ed.ac.uk/information-services/help-consultancy",
+      "feed_url": "https://www.ed.ac.uk/information-services/help-consultancy",
+      "title": "",
       "saved": 0,
       "method": "none"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-08-15T12:11:08Z"
+  "fetched": "2026-08-22T20:20:02Z"
 }
