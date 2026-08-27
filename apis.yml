@@ -107,29 +107,142 @@ x-coverage:
     status: 404
 
 apis:
-
-- aid: university-of-edinburgh:datashare-repository-api
-  name: Edinburgh DataShare REST API
+- aid: university-of-edinburgh:elm-api
+  name: ELM — Edinburgh Language Models API
   x-operator: institution
-  x-operator-evidence: 'datashare.ed.ac.uk is under ed.ac.uk; Nominet Domain Owner: University of Edinburgh'
+  x-operator-evidence: >-
+    edina.ac.uk Nominet Domain Owner: University of Edinburgh, Registered For: EDINA National Data Centre
   description: >-
-    DSpace 8.3 REST API for Edinburgh DataShare, the University's open-access
-    research-data repository. Anonymous callers may read communities (110), collections,
-    browse indexes and the discovery search; /core/items and /core/bitstreams return 401.
-    Edinburgh operates the deployment on its own domain — the API shape is DSpace
-    open-source software rather than Edinburgh engineering, but the service, the data
-    and the DOIs are the institution's. The DSpace 6 legacy /rest API this repository
-    previously documented is retired and returns 404.
+    OpenAI-compatible generative-AI gateway built and run by EDINA at the University of Edinburgh, described
+    by its own metadata as delivering generative AI to UK tertiary education. /api/v1/models and /api/v1/chat/completions
+    both answer 401 with an OpenAI-shaped error envelope without a bearer token, which is what establishes
+    the routes and the auth scheme; /health returns 200. No public self-service registration and no published
+    OpenAPI (/openapi.json returns the SPA shell). This is the clearest case in the profile of Edinburgh
+    acting as an API producer rather than a buyer.
+  humanURL: https://information-services.ed.ac.uk/computing/comms-and-collab/elm
+  baseURL: https://elm.edina.ac.uk/api/v1
+  tags:
+  - Artificial Intelligence
+  - LLM
+  - Gateway
+  - Gated
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-elm-api-openapi.yml
+  - type: Documentation
+    url: https://information-services.ed.ac.uk/computing/comms-and-collab/elm
+  - type: Authentication
+    url: authentication/university-of-edinburgh-authentication.yml
+  - type: Errors
+    url: errors/university-of-edinburgh-errors.yml
+- aid: university-of-edinburgh:identity-federation
+  name: University of Edinburgh Shibboleth Identity Provider
+  x-operator: institution
+  x-operator-evidence: idp.ed.ac.uk is under ed.ac.uk; metadata OrganizationName is "University of Edinburgh"
+  description: >-
+    Shibboleth Identity Provider publishing SAML 2.0 entity metadata unauthenticated at a stable URL,
+    entityID https://idp.ed.ac.uk/shibboleth. Advertises the full SAML 2.0 binding set for SSO and Single
+    Logout plus SAML 1 artifact resolution and attribute query. Institution-operated by definition and
+    machine-readable. Note the IdP web root returns 403 by design — the metadata path is the machine surface
+    and it answers 200.
+  humanURL: >-
+    https://www.ed.ac.uk/information-services/computing/computing-infrastructure/authentication-authorisation
+  baseURL: https://idp.ed.ac.uk/idp
+  tags:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - Authentication
+  properties:
+  - type: x-metadata
+    url: https://idp.ed.ac.uk/idp/shibboleth
+  - type: Conformance
+    url: conformance/university-of-edinburgh-conformance.yml
+  - type: Authentication
+    url: authentication/university-of-edinburgh-authentication.yml
+- aid: university-of-edinburgh:enterprise-api-gateway
+  name: Enterprise API Gateway (gated)
+  x-operator: institution
+  x-operator-evidence: >-
+    api.ed.ac.uk is under ed.ac.uk and resolves to a WSO2 Choreo tenant named uoe (f5aad5f4-...-prod.prod.uoe.choreoapis.dev)
+  description: >-
+    The University's Enterprise APIs programme — Student Records, Timetabling and Staff APIs — runs on
+    a WSO2 Choreo gateway at api.ed.ac.uk. The gateway is live and Edinburgh-operated, but every probed
+    path returns its own JSON 404 envelope, including /openapi, /api-docs, /services and /.well-known/openid-configuration.
+    No route, no catalogue, no developer portal, no scopes. Recorded as a gated surface rather than an
+    absent one. The programme's own public project pages returned HTTP 500 on both digital-strategy.ed.ac.uk
+    and www.ed.ac.uk when probed on 2026-08-19, so the institution's public account of its API programme
+    is currently broken.
+  humanURL: >-
+    https://www.ed.ac.uk/information-services/enterprise-architecture/application-integration/apis-and-connectors
+  baseURL: https://api.ed.ac.uk
+  tags:
+  - Enterprise
+  - Integration
+  - Gated
+  - Internal
+  properties:
+  - type: Documentation
+    url: >-
+      https://www.ed.ac.uk/information-services/enterprise-architecture/application-integration/apis-and-connectors
+  - type: Authentication
+    url: authentication/university-of-edinburgh-authentication.yml
+  - type: Scopes
+    url: scopes/university-of-edinburgh-scopes.yml
+  - type: Lifecycle
+    url: lifecycle/university-of-edinburgh-lifecycle.yml
+- aid: university-of-edinburgh:pure-research-explorer
+  name: Edinburgh Research Explorer (Elsevier Pure) — tenant
+  x-operator: tenant
+  x-operator-evidence: >-
+    www.pure.ed.ac.uk is an Edinburgh-branded subdomain running Elsevier Pure; https://www.pure.ed.ac.uk/ws/api
+    canonicalises to https://api.elsevierpure.com/ws/api/index.html, so the contract is Elsevier's and
+    is not saved under this institution.
+  description: >-
+    Edinburgh Research Explorer is the University's public research information portal, running on Elsevier
+    Pure. The research outputs, the people and the DOIs are Edinburgh's; the API contract is Elsevier's
+    and belongs on Elsevier's own record. Recorded here as a real tenant relationship rather than deleted
+    or credited. The Pure OAI-PMH endpoint returned HTTP 500 on both www.pure.ed.ac.uk/ws/oai and www.research.ed.ac.uk/ws/oai
+    when probed on 2026-08-19, so the harvesting surface is currently broken; the previous dead pointer
+    to it has been removed.
+  humanURL: https://www.research.ed.ac.uk/
+  tags:
+  - Research Outputs
+  - CRIS
+  - Tenant
+  - Vendor Platform
+  properties:
+  - type: Website
+    url: https://www.research.ed.ac.uk/
+- aid: university-of-edinburgh:discovered-primo
+  name: DiscoverEd Library Discovery (Ex Libris Primo) — tenant
+  x-operator: tenant
+  x-operator-evidence: >-
+    discovered.ed.ac.uk serves an Ex Libris Primo application (primoExploreRoot); the Primo API contract
+    is Ex Libris's and shared across every Primo customer
+  description: >-
+    DiscoverEd is the University Library's discovery layer, an Ex Libris Primo tenancy on an Edinburgh
+    subdomain. The holdings are Edinburgh's; the search API is Ex Libris's product and is not saved under
+    this institution.
+  humanURL: https://discovered.ed.ac.uk/
+  tags:
+  - Library
+  - Discovery
+  - Tenant
+  - Vendor Platform
+  properties:
+  - type: Website
+    url: https://discovered.ed.ac.uk/
+- aid: university-of-edinburgh:university-of-edinburgh-catalogue-api
+  name: University of Edinburgh Catalogue API
+  description: Read actions on the EIDF Data Catalogue
   humanURL: https://datashare.ed.ac.uk/
   baseURL: https://datashare.ed.ac.uk/server/api
   tags:
-  - Research Repository
-  - Research Data
-  - DSpace
-  - Open Access
+  - Catalogue
   properties:
   - type: OpenAPI
-    url: openapi/university-of-edinburgh-datashare-repository-api-openapi.yml
+    url: openapi/university-of-edinburgh-catalogue-api-openapi.yml
   - type: Documentation
     url: https://www.ed.ac.uk/information-services/research-support/research-data-service
   - type: JSONSchema
@@ -150,238 +263,102 @@ apis:
     url: lifecycle/university-of-edinburgh-lifecycle.yml
   - type: Conformance
     url: conformance/university-of-edinburgh-conformance.yml
-
-- aid: university-of-edinburgh:datashare-oai
-  name: Edinburgh DataShare OAI-PMH
-  x-operator: institution
-  x-operator-evidence: 'datashare.ed.ac.uk is under ed.ac.uk; Identify self-reports baseURL on the same host'
-  description: >-
-    OAI-PMH 2.0 metadata harvesting endpoint for Edinburgh DataShare. Fully anonymous,
-    no key, twelve metadata prefixes including the UK research formats rioxx and
-    uketd_dc. Records carry DataCite DOIs under prefix 10.7488/ds. Earliest datestamp
-    2008-01-29. This is the most open machine-readable surface the institution operates.
-  humanURL: https://datashare.ed.ac.uk/
-  baseURL: https://datashare.ed.ac.uk/server/oai
-  tags:
-  - OAI-PMH
-  - Metadata
-  - Harvesting
-  - Research Data
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-edinburgh-datashare-oai-pmh-openapi.yml
   - type: Documentation
     url: https://datashare.ed.ac.uk/oai/request?verb=Identify
-  - type: Conformance
-    url: conformance/university-of-edinburgh-conformance.yml
-
-- aid: university-of-edinburgh:era-repository-api
-  name: Edinburgh Research Archive (ERA) REST API
-  x-operator: institution
-  x-operator-evidence: 'era.ed.ac.uk is under ed.ac.uk; Nominet Domain Owner: University of Edinburgh'
-  description: >-
-    DSpace 8.3 REST API for the Edinburgh Research Archive, the University's
-    institutional repository of theses, dissertations and research publications.
-    54 communities readable anonymously; items return 401. Distinct from DataShare and
-    not previously catalogued.
-  humanURL: https://era.ed.ac.uk/
-  baseURL: https://era.ed.ac.uk/server/api
-  tags:
-  - Research Repository
-  - Institutional Repository
-  - Theses
-  - DSpace
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-edinburgh-era-repository-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/university-of-edinburgh-dspace-community-schema.json
   - type: x-examples
     url: examples/university-of-edinburgh-era-communities-example.json
-  - type: Authentication
-    url: authentication/university-of-edinburgh-authentication.yml
-  - type: Lifecycle
-    url: lifecycle/university-of-edinburgh-lifecycle.yml
-
-- aid: university-of-edinburgh:era-oai
-  name: Edinburgh Research Archive (ERA) OAI-PMH
-  x-operator: institution
-  x-operator-evidence: 'era.ed.ac.uk is under ed.ac.uk; Identify self-reports baseURL on the same host'
-  description: >-
-    OAI-PMH 2.0 endpoint for the Edinburgh Research Archive. Thirteen metadata prefixes
-    including etdms for electronic theses alongside rioxx and uketd_dc. DOIs under
-    10.7488/era. Earliest datestamp 2003-10-21.
-  humanURL: https://era.ed.ac.uk/
-  baseURL: https://era.ed.ac.uk/server/oai
-  tags:
-  - OAI-PMH
-  - Metadata
-  - Theses
-  - Harvesting
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-edinburgh-era-oai-pmh-openapi.yml
   - type: Documentation
     url: https://era.ed.ac.uk/oai/request?verb=Identify
-  - type: Conformance
-    url: conformance/university-of-edinburgh-conformance.yml
-
-- aid: university-of-edinburgh:eidf-data-catalogue-api
-  name: EIDF Data Catalogue API
-  x-operator: institution
-  x-operator-evidence: 'eidf.ac.uk Nominet Domain Owner: University of Edinburgh, Registered For: Edinburgh International Data Facility (EIDF)'
-  description: >-
-    CKAN 2.11.3 Action API for the Edinburgh International Data Facility Data Catalogue,
-    operated by EPCC at the University of Edinburgh. 14 public datasets across 13 EIDF
-    project organisations, readable anonymously with no key. The deployment carries a
-    custom eidf_oidc_auth extension written for it, so this is an institution-configured
-    platform rather than a hosted tenancy.
-  humanURL: https://catalogue.eidf.ac.uk/
-  baseURL: https://catalogue.eidf.ac.uk/api/3/action
-  tags:
-  - Open Data
-  - CKAN
-  - Research Computing
-  - Data Catalog
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-edinburgh-eidf-data-catalogue-api-openapi.yml
   - type: Documentation
     url: https://catalogue.eidf.ac.uk/
   - type: JSONSchema
     url: json-schema/university-of-edinburgh-ckan-package-schema.json
   - type: x-examples
     url: examples/university-of-edinburgh-eidf-package-show-example.json
-  - type: Authentication
-    url: authentication/university-of-edinburgh-authentication.yml
-
-- aid: university-of-edinburgh:elm-api
-  name: ELM — Edinburgh Language Models API
-  x-operator: institution
-  x-operator-evidence: 'edina.ac.uk Nominet Domain Owner: University of Edinburgh, Registered For: EDINA National Data Centre'
-  description: >-
-    OpenAI-compatible generative-AI gateway built and run by EDINA at the University of
-    Edinburgh, described by its own metadata as delivering generative AI to UK tertiary
-    education. /api/v1/models and /api/v1/chat/completions both answer 401 with an
-    OpenAI-shaped error envelope without a bearer token, which is what establishes the
-    routes and the auth scheme; /health returns 200. No public self-service registration
-    and no published OpenAPI (/openapi.json returns the SPA shell). This is the clearest
-    case in the profile of Edinburgh acting as an API producer rather than a buyer.
-  humanURL: https://information-services.ed.ac.uk/computing/comms-and-collab/elm
-  baseURL: https://elm.edina.ac.uk/api/v1
+- aid: university-of-edinburgh:university-of-edinburgh-oai-pmh-api
+  name: University of Edinburgh OAI PMH API
+  description: OAI-PMH 2.0 metadata harvesting for Edinburgh DataShare
+  humanURL: https://datashare.ed.ac.uk/
+  baseURL: https://datashare.ed.ac.uk/server/api
   tags:
-  - Artificial Intelligence
-  - LLM
-  - Gateway
-  - Gated
+  - OAI-PMH
   properties:
   - type: OpenAPI
-    url: openapi/university-of-edinburgh-elm-api-openapi.yml
+    url: openapi/university-of-edinburgh-oai-pmh-api-openapi.yml
   - type: Documentation
-    url: https://information-services.ed.ac.uk/computing/comms-and-collab/elm
+    url: https://www.ed.ac.uk/information-services/research-support/research-data-service
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-dspace-community-schema.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-datashare-communities-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
   - type: Authentication
     url: authentication/university-of-edinburgh-authentication.yml
   - type: Errors
     url: errors/university-of-edinburgh-errors.yml
-
-- aid: university-of-edinburgh:identity-federation
-  name: University of Edinburgh Shibboleth Identity Provider
-  x-operator: institution
-  x-operator-evidence: 'idp.ed.ac.uk is under ed.ac.uk; metadata OrganizationName is "University of Edinburgh"'
-  description: >-
-    Shibboleth Identity Provider publishing SAML 2.0 entity metadata unauthenticated at
-    a stable URL, entityID https://idp.ed.ac.uk/shibboleth. Advertises the full SAML 2.0
-    binding set for SSO and Single Logout plus SAML 1 artifact resolution and attribute
-    query. Institution-operated by definition and machine-readable. Note the IdP web root
-    returns 403 by design — the metadata path is the machine surface and it answers 200.
-  humanURL: https://www.ed.ac.uk/information-services/computing/computing-infrastructure/authentication-authorisation
-  baseURL: https://idp.ed.ac.uk/idp
-  tags:
-  - Identity Federation
-  - SAML
-  - Shibboleth
-  - Authentication
-  properties:
-  - type: x-metadata
-    url: https://idp.ed.ac.uk/idp/shibboleth
-  - type: Conformance
-    url: conformance/university-of-edinburgh-conformance.yml
-  - type: Authentication
-    url: authentication/university-of-edinburgh-authentication.yml
-
-- aid: university-of-edinburgh:enterprise-api-gateway
-  name: Enterprise API Gateway (gated)
-  x-operator: institution
-  x-operator-evidence: 'api.ed.ac.uk is under ed.ac.uk and resolves to a WSO2 Choreo tenant named uoe (f5aad5f4-...-prod.prod.uoe.choreoapis.dev)'
-  description: >-
-    The University's Enterprise APIs programme — Student Records, Timetabling and Staff
-    APIs — runs on a WSO2 Choreo gateway at api.ed.ac.uk. The gateway is live and
-    Edinburgh-operated, but every probed path returns its own JSON 404 envelope, including
-    /openapi, /api-docs, /services and /.well-known/openid-configuration. No route, no
-    catalogue, no developer portal, no scopes. Recorded as a gated surface rather than an
-    absent one. The programme's own public project pages returned HTTP 500 on both
-    digital-strategy.ed.ac.uk and www.ed.ac.uk when probed on 2026-08-19, so the
-    institution's public account of its API programme is currently broken.
-  humanURL: https://www.ed.ac.uk/information-services/enterprise-architecture/application-integration/apis-and-connectors
-  baseURL: https://api.ed.ac.uk
-  tags:
-  - Enterprise
-  - Integration
-  - Gated
-  - Internal
-  properties:
-  - type: Documentation
-    url: https://www.ed.ac.uk/information-services/enterprise-architecture/application-integration/apis-and-connectors
-  - type: Authentication
-    url: authentication/university-of-edinburgh-authentication.yml
-  - type: Scopes
-    url: scopes/university-of-edinburgh-scopes.yml
   - type: Lifecycle
     url: lifecycle/university-of-edinburgh-lifecycle.yml
-
-- aid: university-of-edinburgh:pure-research-explorer
-  name: Edinburgh Research Explorer (Elsevier Pure) — tenant
-  x-operator: tenant
-  x-operator-evidence: >-
-    www.pure.ed.ac.uk is an Edinburgh-branded subdomain running Elsevier Pure;
-    https://www.pure.ed.ac.uk/ws/api canonicalises to https://api.elsevierpure.com/ws/api/index.html,
-    so the contract is Elsevier's and is not saved under this institution.
-  description: >-
-    Edinburgh Research Explorer is the University's public research information portal,
-    running on Elsevier Pure. The research outputs, the people and the DOIs are
-    Edinburgh's; the API contract is Elsevier's and belongs on Elsevier's own record.
-    Recorded here as a real tenant relationship rather than deleted or credited.
-    The Pure OAI-PMH endpoint returned HTTP 500 on both www.pure.ed.ac.uk/ws/oai and
-    www.research.ed.ac.uk/ws/oai when probed on 2026-08-19, so the harvesting surface is
-    currently broken; the previous dead pointer to it has been removed.
-  humanURL: https://www.research.ed.ac.uk/
+  - type: Conformance
+    url: conformance/university-of-edinburgh-conformance.yml
+  - type: Documentation
+    url: https://datashare.ed.ac.uk/oai/request?verb=Identify
+  - type: x-examples
+    url: examples/university-of-edinburgh-era-communities-example.json
+  - type: Documentation
+    url: https://era.ed.ac.uk/oai/request?verb=Identify
+  - type: Documentation
+    url: https://catalogue.eidf.ac.uk/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-ckan-package-schema.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-eidf-package-show-example.json
+- aid: university-of-edinburgh:university-of-edinburgh-repository-api
+  name: University of Edinburgh Repository API
+  description: Service root, communities, collections and discovery for Edinburgh DataShare
+  humanURL: https://datashare.ed.ac.uk/
+  baseURL: https://datashare.ed.ac.uk/server/api
   tags:
-  - Research Outputs
-  - CRIS
-  - Tenant
-  - Vendor Platform
+  - Repository
   properties:
-  - type: Website
-    url: https://www.research.ed.ac.uk/
-
-- aid: university-of-edinburgh:discovered-primo
-  name: DiscoverEd Library Discovery (Ex Libris Primo) — tenant
-  x-operator: tenant
-  x-operator-evidence: 'discovered.ed.ac.uk serves an Ex Libris Primo application (primoExploreRoot); the Primo API contract is Ex Libris''s and shared across every Primo customer'
-  description: >-
-    DiscoverEd is the University Library's discovery layer, an Ex Libris Primo tenancy on
-    an Edinburgh subdomain. The holdings are Edinburgh's; the search API is Ex Libris's
-    product and is not saved under this institution.
-  humanURL: https://discovered.ed.ac.uk/
-  tags:
-  - Library
-  - Discovery
-  - Tenant
-  - Vendor Platform
-  properties:
-  - type: Website
-    url: https://discovered.ed.ac.uk/
-
+  - type: OpenAPI
+    url: openapi/university-of-edinburgh-repository-api-openapi.yml
+  - type: Documentation
+    url: https://www.ed.ac.uk/information-services/research-support/research-data-service
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-dspace-community-schema.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-datashare-communities-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-edinburgh-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-edinburgh-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-edinburgh-context.jsonld
+  - type: Authentication
+    url: authentication/university-of-edinburgh-authentication.yml
+  - type: Errors
+    url: errors/university-of-edinburgh-errors.yml
+  - type: Lifecycle
+    url: lifecycle/university-of-edinburgh-lifecycle.yml
+  - type: Conformance
+    url: conformance/university-of-edinburgh-conformance.yml
+  - type: Documentation
+    url: https://datashare.ed.ac.uk/oai/request?verb=Identify
+  - type: x-examples
+    url: examples/university-of-edinburgh-era-communities-example.json
+  - type: Documentation
+    url: https://era.ed.ac.uk/oai/request?verb=Identify
+  - type: Documentation
+    url: https://catalogue.eidf.ac.uk/
+  - type: JSONSchema
+    url: json-schema/university-of-edinburgh-ckan-package-schema.json
+  - type: x-examples
+    url: examples/university-of-edinburgh-eidf-package-show-example.json
 common:
 - type: Website
   url: https://www.ed.ac.uk/
