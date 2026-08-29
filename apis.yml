@@ -24,6 +24,18 @@ description: >-
   seven OpenAPI documents previously held for this institution described the DSpace 6
   legacy /rest API, which is retired and now returns 404.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: none
