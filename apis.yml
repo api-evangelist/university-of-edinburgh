@@ -372,6 +372,9 @@ apis:
   - type: x-examples
     url: examples/university-of-edinburgh-eidf-package-show-example.json
 common:
+- type: CapabilityMap
+  url: capabilities/university-of-edinburgh-capability-edges.yml
+  name: University of Edinburgh Business Capability Map
 - type: Website
   url: https://www.ed.ac.uk/
 - type: Documentation

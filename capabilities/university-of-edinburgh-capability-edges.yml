@@ -1,0 +1,26 @@
+slug: university-of-edinburgh
+provider: University of Edinburgh
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: ELM
+  spec_file: university-of-edinburgh-elm-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: ELM is the University of Edinburgh's own generative-AI access platform ... GET /models listModels;
+    POST /chat/completions createChatCompletion
+  reason: An institution-operated generative-AI inference platform exposing model listing and chat completion.
+    This realises Artificial Intelligence Management (AI model provisioning/consumption), not an education-specific
+    capability, even though the buyer base is tertiary education.
