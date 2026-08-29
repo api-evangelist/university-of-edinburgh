@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh DataShare OAI-PMH
+  description: >-
+    OAI-PMH 2.0 metadata harvesting endpoint operated by the University of
+    Edinburgh for Edinburgh DataShare. Probed live on 2026-08-19: verb=Identify returned
+    200 with repositoryName "Datashare", protocolVersion 2.0, adminEmail
+    data-library-team@mlist.is.ed.ac.uk and earliestDatestamp 2008-01-29T13:47:07Z. verb=ListMetadataFormats
+    returned twelve prefixes including oai_dc, qdc, mods, mets, rioxx and
+    uketd_dc. Records carry DataCite DOIs under the University of Edinburgh
+    prefix 10.7488.
+
+    OAI-PMH is a protocol, not a REST API; this document describes the single
+    HTTP entry point and its verb parameter so the endpoint is machine-callable
+    from a standard client. Responses are XML.
+  version: "2.0"
+  contact:
+    name: Datashare
+    url: https://datashare.ed.ac.uk/
+    email: data-library-team@mlist.is.ed.ac.uk
+  x-operator: institution
+  x-operator-evidence: "host datashare.ed.ac.uk is under ed.ac.uk, Domain Owner: University of Edinburgh (Nominet whois)"
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://datashare.ed.ac.uk/server/oai/request?verb=Identify
+servers:
+- url: https://datashare.ed.ac.uk/server/oai
+  description: Canonical baseURL as self-reported by the Identify response (probed 200)
+tags:
+- name: OAI-PMH
+  description: OAI-PMH 2.0 metadata harvesting for Edinburgh DataShare
+paths:
+  /request:
+    get:
+      tags: [OAI-PMH]
+      operationId: oaiRequest
+      summary: OAI-PMH request entry point
+      description: >-
+        Single OAI-PMH entry point. The verb parameter selects the operation.
+        Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords and
+        GetRecord were all reachable anonymously when probed.
+      parameters:
+      - name: verb
+        in: query
+        required: true
+        description: OAI-PMH verb
+        schema:
+          type: string
+          enum: [Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords, GetRecord]
+      - name: metadataPrefix
+        in: query
+        required: false
+        description: Metadata format (observed prefixes on this endpoint)
+        schema:
+          type: string
+          enum: [oai_dc, qdc, dim, mods, mets, ore, didl, xoai, rioxx, uketd_dc, rdf, marc]
+      - name: identifier
+        in: query
+        required: false
+        description: OAI identifier, required for GetRecord
+        schema: {type: string}
+      - name: set
+        in: query
+        required: false
+        description: Set spec to restrict a harvest
+        schema: {type: string}
+      - name: from
+        in: query
+        required: false
+        description: Selective-harvest lower bound (granularity YYYY-MM-DDThh:mm:ssZ)
+        schema: {type: string}
+      - name: until
+        in: query
+        required: false
+        description: Selective-harvest upper bound
+        schema: {type: string}
+      - name: resumptionToken
+        in: query
+        required: false
+        description: Flow-control token from a previous incomplete list response
+        schema: {type: string}
+      responses:
+        '200':
+          description: >-
+            OAI-PMH XML response (observed). Protocol-level failures are also
+            returned with HTTP 200 and an <error> element carrying an OAI error code.
+          content:
+            text/xml:
+              schema:
+                type: string
+                description: OAI-PMH 2.0 XML document

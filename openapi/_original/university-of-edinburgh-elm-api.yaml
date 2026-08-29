@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: ELM — Edinburgh Language Models API
+  description: >-
+    ELM is the University of Edinburgh's own generative-AI access platform, described
+    by its own metadata as "an online platform that delivers generative AI to UK
+    tertiary education." It exposes an OpenAI-compatible HTTP API at
+    https://elm.edina.ac.uk/api/v1 secured with a bearer token.
+
+    This document was reconstructed by PROBING the live service on 2026-08-19. Only
+    what was actually observed is described. Anonymous calls to /api/v1/models and
+    /api/v1/chat/completions both returned HTTP 401 with an OpenAI-shaped error
+    envelope, which is what establishes both the route and the auth scheme. The
+    request and response bodies of the authenticated paths are NOT described here,
+    because they were not observed — the platform publishes no OpenAPI document
+    (/openapi.json and /docs both return the Angular SPA shell, a soft-200).
+
+    Operator note: this is one of the few genuinely institution-ENGINEERED API
+    surfaces in the University of Edinburgh's public footprint. edina.ac.uk is
+    registered to the EDINA National Data Centre with Domain Owner "University of
+    Edinburgh", and EDINA is a University of Edinburgh centre. Edinburgh is acting as
+    a producer here, not a buyer.
+  version: "1"
+  contact:
+    name: EDINA, University of Edinburgh
+    url: https://information-services.ed.ac.uk/computing/comms-and-collab/elm
+  x-operator: institution
+  x-operator-evidence: "edina.ac.uk Domain Owner: University of Edinburgh (Nominet whois); Registered For: EDINA National Data Centre"
+  x-access: gated
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://elm.edina.ac.uk/api/v1/models
+servers:
+- url: https://elm.edina.ac.uk/api/v1
+  description: ELM OpenAI-compatible API (probed — 401 without a bearer token)
+- url: https://elm.edina.ac.uk
+  description: ELM platform root, for the unauthenticated health check
+tags:
+- name: ELM
+  description: Edinburgh Language Models generative-AI gateway
+paths:
+  /models:
+    get:
+      tags: [ELM]
+      operationId: listModels
+      summary: List the models available to the caller
+      description: >-
+        OpenAI-compatible model listing. Observed 401 without a bearer token; the
+        authenticated response body was not observed and is deliberately not described.
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: >-
+            Model list. NOT OBSERVED — no authenticated probe was made, so no schema
+            is asserted here. Expect the OpenAI /v1/models shape by convention only.
+        '401':
+          description: Missing or invalid Authorization header (observed)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: 401
+                  type: invalid_request_error
+                  message: Missing or invalid Authorization header
+  /chat/completions:
+    post:
+      tags: [ELM]
+      operationId: createChatCompletion
+      summary: Create a chat completion
+      description: >-
+        OpenAI-compatible chat completion endpoint. Observed 401 without a bearer
+        token when posted a minimal JSON body. Request and response schemas are not
+        asserted because they were not observed.
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: >-
+                Shape not observed. OpenAI chat-completion convention (model, messages)
+                is assumed by the platform's compatibility claim, not verified here.
+      responses:
+        '200':
+          description: Chat completion. NOT OBSERVED — no schema asserted.
+        '401':
+          description: Missing or invalid Authorization header (observed)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token issued to University of Edinburgh accounts. There is no public
+        self-service registration; /api redirects (302) to https://elm.edina.ac.uk/login.
+  schemas:
+    Error:
+      type: object
+      description: OpenAI-compatible error envelope (observed verbatim)
+      properties:
+        error:
+          type: object
+          properties:
+            code: {type: integer, example: 401}
+            type: {type: string, example: invalid_request_error}
+            message: {type: string, example: Missing or invalid Authorization header}

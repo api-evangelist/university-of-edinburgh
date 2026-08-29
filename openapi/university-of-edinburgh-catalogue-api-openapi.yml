@@ -1,0 +1,277 @@
+openapi: 3.2.0
+info:
+  title: EIDF Data Catalogue API
+  description: 'CKAN 2.11.3 Action API for the Edinburgh International Data Facility (EIDF) Data Catalogue, operated by EPCC at the University of Edinburgh. Probed live on 2026-08-19: status_show returned CKAN 2.11.3 with the site''s own extension list, package_search returned 14 public datasets and organization_list returned 13 EIDF project organisations. Anonymous read requires no key.
+
+    This is the clearest institution-operated open-data surface in Edinburgh''s public footprint: EPCC runs the platform, the domain is Edinburgh''s, and the deployment carries a custom eidf_oidc_auth extension written for it.
+
+    Only the read actions verified anonymously are described. CKAN exposes many more actions; the ones below are the ones that answered.'
+  version: '3'
+  contact:
+    name: Edinburgh International Data Facility (EPCC, University of Edinburgh)
+    url: https://catalogue.eidf.ac.uk/
+  x-operator: institution
+  x-operator-evidence: 'eidf.ac.uk Domain Owner: University of Edinburgh (Nominet whois); Registered For: Edinburgh International Data Facility (EIDF)'
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://catalogue.eidf.ac.uk/api/3/action/status_show
+servers:
+- url: https://catalogue.eidf.ac.uk/api/3/action
+  description: EIDF Data Catalogue CKAN Action API (probed 200)
+tags:
+- name: Catalogue
+  description: Read actions on the EIDF Data Catalogue
+paths:
+  /status_show:
+    get:
+      tags:
+      - Catalogue
+      operationId: statusShow
+      summary: Site status and installed extensions
+      responses:
+        '200':
+          description: CKAN status envelope (observed)
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Envelope'
+                - type: object
+                  properties:
+                    result:
+                      $ref: '#/components/schemas/Status'
+  /package_list:
+    get:
+      tags:
+      - Catalogue
+      operationId: packageList
+      summary: List every dataset name
+      responses:
+        '200':
+          description: Array of dataset names (observed)
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Envelope'
+                - type: object
+                  properties:
+                    result:
+                      type: array
+                      items:
+                        type: string
+  /package_search:
+    get:
+      tags:
+      - Catalogue
+      operationId: packageSearch
+      summary: Search datasets
+      parameters:
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Solr query string
+      - name: rows
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: start
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Search envelope (observed, count=14 on 2026-08-19)
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Envelope'
+                - type: object
+                  properties:
+                    result:
+                      type: object
+                      properties:
+                        count:
+                          type: integer
+                        results:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Package'
+  /package_show:
+    get:
+      tags:
+      - Catalogue
+      operationId: packageShow
+      summary: Full metadata for one dataset
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Dataset name or id
+      responses:
+        '200':
+          description: Dataset record (observed)
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Envelope'
+                - type: object
+                  properties:
+                    result:
+                      $ref: '#/components/schemas/Package'
+        '404':
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /organization_list:
+    get:
+      tags:
+      - Catalogue
+      operationId: organizationList
+      summary: List catalogue organisations (EIDF projects)
+      responses:
+        '200':
+          description: Array of organisation names (observed, 13 on 2026-08-19)
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Envelope'
+                - type: object
+                  properties:
+                    result:
+                      type: array
+                      items:
+                        type: string
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        site_title:
+          type: string
+        site_description:
+          type: string
+        site_url:
+          type: string
+          format: uri
+        locale_default:
+          type: string
+        ckan_version:
+          type: string
+          example: 2.11.3
+        extensions:
+          type: array
+          items:
+            type: string
+    Package:
+      type: object
+      description: CKAN dataset (observed shape)
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        title:
+          type: string
+        notes:
+          type:
+          - string
+          - 'null'
+        license_id:
+          type:
+          - string
+          - 'null'
+        license_title:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+        private:
+          type: boolean
+        type:
+          type: string
+        metadata_created:
+          type: string
+          format: date-time
+        metadata_modified:
+          type: string
+          format: date-time
+        organization:
+          type:
+          - object
+          - 'null'
+        num_resources:
+          type: integer
+        num_tags:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              display_name:
+                type: string
+              state:
+                type: string
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type:
+                - string
+                - 'null'
+              url:
+                type: string
+              format:
+                type: string
+              created:
+                type: string
+    ErrorEnvelope:
+      type: object
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            __type:
+              type: string
+    Envelope:
+      type: object
+      description: Standard CKAN Action API response envelope (observed)
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean

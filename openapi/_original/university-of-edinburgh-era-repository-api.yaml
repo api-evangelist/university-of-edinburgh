@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: Edinburgh Research Archive (ERA) REST API
+  description: >-
+    Public read surface of the DSpace 8.3 REST API operated by the University of
+    Edinburgh at era.ed.ac.uk. This document was reconstructed by PROBING the live
+    service on 2026-08-19 — every path, status code and response shape below was
+    observed, not assumed. The DSpace 8 REST API replaced the DSpace 6 legacy
+    /rest API, which now returns 404 at this host.
+
+    Operator note: the University of Edinburgh operates this deployment on its own
+    registrable domain (ed.ac.uk). The API *shape* is DSpace open-source software,
+    not Edinburgh engineering; the service, the data and the DOIs are Edinburgh's.
+
+    Access note: anonymous callers may read communities, collections, browse
+    indexes and the discovery search. /core/items and /core/bitstreams return
+    401 Unauthorized to anonymous callers on this deployment.
+  version: "8.3"
+  contact:
+    name: ERA
+    url: https://era.ed.ac.uk/
+    email: era.admin@ed.ac.uk
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/dspace-8_x/LICENSE
+  x-operator: institution
+  x-operator-evidence: "host era.ed.ac.uk is under ed.ac.uk, Domain Owner: University of Edinburgh (Nominet whois)"
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://era.ed.ac.uk/server/api
+servers:
+- url: https://era.ed.ac.uk/server/api
+  description: Edinburgh Research Archive (ERA) DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
+tags:
+- name: Repository
+  description: Service root, communities, collections and discovery for Edinburgh Research Archive (ERA)
+paths:
+  /:
+    get:
+      tags: [Repository]
+      operationId: getRoot
+      summary: Service root and HAL link index
+      description: Returns the DSpace name, version and the HAL _links index of every REST resource.
+      responses:
+        '200':
+          description: Service root (observed)
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Root'
+  /core/communities:
+    get:
+      tags: [Repository]
+      operationId: listCommunities
+      summary: List communities
+      description: Paged list of top-level and nested communities. Anonymous read observed 200.
+      parameters:
+      - $ref: '#/components/parameters/Size'
+      - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paged community list (observed, page.totalElements=54)
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CommunityPage'
+  /core/collections:
+    get:
+      tags: [Repository]
+      operationId: listCollections
+      summary: List collections
+      description: Paged list of collections. Anonymous read observed 200.
+      parameters:
+      - $ref: '#/components/parameters/Size'
+      - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paged collection list (observed)
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CollectionPage'
+  /discover/search/objects:
+    get:
+      tags: [Repository]
+      operationId: searchObjects
+      summary: Discovery search across repository objects
+      description: Faceted discovery search. Anonymous read observed 200.
+      parameters:
+      - name: query
+        in: query
+        required: false
+        schema: {type: string}
+        description: Free-text query
+      - $ref: '#/components/parameters/Size'
+      - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Discovery result envelope (observed)
+          content:
+            application/hal+json:
+              schema:
+                type: object
+                properties:
+                  type: {type: string, example: discover}
+                  _embedded: {type: object}
+                  _links: {type: object}
+  /discover/browses:
+    get:
+      tags: [Repository]
+      operationId: listBrowses
+      summary: List configured browse indexes
+      description: Browse indexes (title, dateissued, author, subject). Anonymous read observed 200.
+      responses:
+        '200':
+          description: Browse index list (observed)
+          content:
+            application/hal+json:
+              schema:
+                type: object
+                properties:
+                  _embedded: {type: object}
+                  _links: {type: object}
+  /core/items:
+    get:
+      tags: [Repository]
+      operationId: listItems
+      summary: List items (authenticated)
+      description: >-
+        Observed 401 for anonymous callers on this deployment. Item metadata is
+        reachable anonymously through /discover/search/objects and OAI-PMH instead.
+      responses:
+        '401':
+          description: Authentication is required (observed)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /core/bitstreams:
+    get:
+      tags: [Repository]
+      operationId: listBitstreams
+      summary: List bitstreams (authenticated)
+      description: Observed 401 for anonymous callers on this deployment.
+      responses:
+        '401':
+          description: Authentication is required (observed)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    Size:
+      name: size
+      in: query
+      required: false
+      schema: {type: integer, default: 20}
+      description: Page size
+    Page:
+      name: page
+      in: query
+      required: false
+      schema: {type: integer, default: 0}
+      description: Zero-based page number
+  schemas:
+    Root:
+      type: object
+      description: DSpace service root (observed shape)
+      properties:
+        dspaceUI: {type: string, format: uri, example: 'https://era.ed.ac.uk'}
+        dspaceName: {type: string, example: 'ERA'}
+        dspaceServer: {type: string, format: uri, example: 'https://era.ed.ac.uk/server'}
+        dspaceVersion: {type: string, example: 'DSpace 8.3'}
+        type: {type: string, example: root}
+        _links: {type: object}
+    PageMeta:
+      type: object
+      properties:
+        size: {type: integer}
+        totalElements: {type: integer}
+        totalPages: {type: integer}
+        number: {type: integer}
+    Community:
+      type: object
+      description: DSpace community (observed shape)
+      properties:
+        id: {type: string, format: uuid}
+        uuid: {type: string, format: uuid}
+        name: {type: string}
+        handle: {type: string, example: '10283/2821'}
+        archivedItemsCount: {type: integer}
+        type: {type: string, example: community}
+        metadata:
+          type: object
+          description: Dublin Core metadata map keyed by qualified DC field
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                value: {type: string}
+                language: {type: string, nullable: true}
+                authority: {type: string, nullable: true}
+                confidence: {type: integer}
+                place: {type: integer}
+        _links: {type: object}
+    Collection:
+      type: object
+      description: DSpace collection (observed shape)
+      properties:
+        id: {type: string, format: uuid}
+        uuid: {type: string, format: uuid}
+        name: {type: string}
+        handle: {type: string}
+        archivedItemsCount: {type: integer}
+        type: {type: string, example: collection}
+        metadata: {type: object}
+        _links: {type: object}
+    CommunityPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            communities:
+              type: array
+              items: {$ref: '#/components/schemas/Community'}
+        page: {$ref: '#/components/schemas/PageMeta'}
+        _links: {type: object}
+    CollectionPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            collections:
+              type: array
+              items: {$ref: '#/components/schemas/Collection'}
+        page: {$ref: '#/components/schemas/PageMeta'}
+        _links: {type: object}
+    Error:
+      type: object
+      description: Spring Boot error envelope (observed)
+      properties:
+        timestamp: {type: string, format: date-time}
+        status: {type: integer}
+        error: {type: string}
+        message: {type: string}
+        path: {type: string}

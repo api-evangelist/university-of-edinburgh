@@ -1,26 +1,38 @@
 {
   "provider": "university-of-edinburgh",
   "sources": [
-    "university-of-edinburgh-bitstreams-api-openapi.yml",
-    "university-of-edinburgh-collections-api-openapi.yml",
-    "university-of-edinburgh-communities-api-openapi.yml",
-    "university-of-edinburgh-hierarchy-api-openapi.yml",
-    "university-of-edinburgh-items-api-openapi.yml",
-    "university-of-edinburgh-registries-api-openapi.yml",
-    "university-of-edinburgh-status-api-openapi.yml"
+    "university-of-edinburgh-datashare-oai-pmh-openapi.yml",
+    "university-of-edinburgh-datashare-repository-api-openapi.yml",
+    "university-of-edinburgh-eidf-data-catalogue-api-openapi.yml",
+    "university-of-edinburgh-elm-api-openapi.yml",
+    "university-of-edinburgh-era-oai-pmh-openapi.yml",
+    "university-of-edinburgh-era-repository-api-openapi.yml"
   ],
   "outputs": [
-    "university-of-edinburgh-bitstreams-api-openapi.yml",
-    "university-of-edinburgh-collections-api-openapi.yml",
-    "university-of-edinburgh-communities-api-openapi.yml",
-    "university-of-edinburgh-hierarchy-api-openapi.yml",
-    "university-of-edinburgh-items-api-openapi.yml",
-    "university-of-edinburgh-registries-api-openapi.yml",
-    "university-of-edinburgh-status-api-openapi.yml"
+    "university-of-edinburgh-oai-pmh-api-openapi.yml",
+    "university-of-edinburgh-repository-api-openapi.yml",
+    "university-of-edinburgh-catalogue-api-openapi.yml",
+    "university-of-edinburgh-elm-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "archived openapi/university-of-edinburgh-datashare-oai-pmh-openapi.yml",
+    "archived openapi/university-of-edinburgh-datashare-repository-api-openapi.yml",
+    "archived openapi/university-of-edinburgh-eidf-data-catalogue-api-openapi.yml",
+    "archived openapi/university-of-edinburgh-era-oai-pmh-openapi.yml",
+    "archived openapi/university-of-edinburgh-era-repository-api-openapi.yml"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "university-of-edinburgh-datashare-oai-pmh-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "university-of-edinburgh-datashare-repository-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "university-of-edinburgh-eidf-data-catalogue-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "university-of-edinburgh-elm-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "university-of-edinburgh-era-oai-pmh-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "university-of-edinburgh-era-repository-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'OAI-PMH' spans 2 source specs (university-of-edinburgh-datashare-oai-pmh-openapi.yml, university-of-edinburgh-era-oai-pmh-openapi.yml): per-path servers applied",
+    "tag 'Repository' spans 2 source specs (university-of-edinburgh-datashare-repository-api-openapi.yml, university-of-edinburgh-era-repository-api-openapi.yml): per-path servers applied",
+    "apis.yml register: written (+3 apis, 8 total)"
+  ],
   "skipped": []
 }
