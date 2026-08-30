@@ -1,0 +1,129 @@
+name: University of Edinburgh — Education Regime Domain Standard Conformance
+description: >-
+  Conformance of institution-operated University of Edinburgh surfaces against the
+  Kin Score `education` regulatory regime standards[]. Every claim below is backed by
+  a live probe run on 2026-08-19 with the exact URL and observed status recorded.
+  Standards that were NOT found are listed explicitly as not_found rather than omitted,
+  so the absence is a measurement rather than a silence.
+generated: '2026-08-19'
+method: probed
+source: https://datashare.ed.ac.uk/server/oai/request?verb=Identify
+regime: education
+
+conformance:
+
+- standard: oai-pmh
+  status: confirmed
+  operator: institution
+  detail: >-
+    Two institution-operated OAI-PMH 2.0 endpoints. Both self-report protocolVersion 2.0
+    in the Identify response and serve twelve/thirteen metadata prefixes including the
+    UK research-specific rioxx, uketd_dc and (ERA only) etdms.
+  evidence:
+  - url: https://datashare.ed.ac.uk/oai/request?verb=Identify
+    status: 200
+    observed: 'repositoryName=Datashare, protocolVersion=2.0, baseURL=https://datashare.ed.ac.uk/server/oai/request, earliestDatestamp=2008-01-29T13:47:07Z, adminEmail=data-library-team@mlist.is.ed.ac.uk'
+  - url: https://era.ed.ac.uk/oai/request?verb=Identify
+    status: 200
+    observed: 'repositoryName=ERA, protocolVersion=2.0, baseURL=https://era.ed.ac.uk/server/oai/request, earliestDatestamp=2003-10-21T14:32:50Z, adminEmail=era.admin@ed.ac.uk'
+  - url: https://datashare.ed.ac.uk/oai/request?verb=ListMetadataFormats
+    status: 200
+    observed: 'didl mods ore mets xoai dim rioxx uketd_dc qdc oai_dc rdf marc'
+  - url: https://era.ed.ac.uk/oai/request?verb=ListMetadataFormats
+    status: 200
+    observed: 'didl mods ore mets xoai dim rioxx uketd_dc qdc oai_dc rdf marc etdms'
+
+- standard: shibboleth
+  status: confirmed
+  operator: institution
+  detail: >-
+    Institution-operated Shibboleth Identity Provider publishing SAML 2.0 metadata at a
+    stable, unauthenticated URL. The metadata advertises the Shibboleth-specific
+    SSO profile endpoint alongside the standard SAML2 bindings.
+  evidence:
+  - url: https://idp.ed.ac.uk/idp/shibboleth
+    status: 200
+    observed: 'EntityDescriptor entityID="https://idp.ed.ac.uk/shibboleth", OrganizationName="University of Edinburgh", shibmd namespace present, Shibboleth SSO profile at https://idp.ed.ac.uk/idp/profile/Shibboleth/SSO'
+
+- standard: saml
+  status: confirmed
+  operator: institution
+  detail: >-
+    The same IdP metadata document advertises the full SAML 2.0 binding set
+    (HTTP-POST, HTTP-Redirect, POST-SimpleSign, SOAP) for both SSO and Single Logout,
+    plus SAML 1 artifact resolution and attribute query on port 8443.
+  evidence:
+  - url: https://idp.ed.ac.uk/idp/shibboleth
+    status: 200
+    observed: 'SAML2 SSO/SLO endpoints (POST, Redirect, POST-SimpleSign), SAML2 SOAP ArtifactResolution + AttributeQuery, SAML1 SOAP ArtifactResolution + AttributeQuery'
+
+- standard: datacite
+  status: confirmed
+  operator: institution
+  detail: >-
+    Both institutional repositories mint DataCite DOIs under the University of
+    Edinburgh prefix 10.7488 (10.7488/ds/* for DataShare, 10.7488/era/* for ERA).
+    A sampled DOI resolves in the DataCite API as findable with a University of
+    Edinburgh publisher string, so the registration is real and not merely a
+    formatted string in a metadata field.
+  evidence:
+  - url: https://datashare.ed.ac.uk/oai/request?verb=ListRecords&metadataPrefix=oai_dc
+    status: 200
+    observed: 'dc:identifier values https://doi.org/10.7488/ds/4497, 10.7488/ds/2862, 10.7488/ds/2821'
+  - url: https://era.ed.ac.uk/oai/request?verb=ListRecords&metadataPrefix=oai_dc
+    status: 200
+    observed: 'dc:identifier values 10.7488/era/3779, 10.7488/era/2231, 10.7488/era/3162'
+  - url: https://api.datacite.org/dois/10.7488/ds/4497
+    status: 200
+    observed: 'state=findable, publisher="University of Edinburgh. Edinburgh College of Art"'
+
+- standard: crossref
+  status: partial
+  operator: institution
+  detail: >-
+    DataShare's DSpace deployment exposes a working Crossref external-source
+    integration used for metadata lookup during deposit. This is Edinburgh consuming
+    Crossref, not Edinburgh registering content with Crossref — credited as partial
+    for that reason.
+  evidence:
+  - url: https://datashare.ed.ac.uk/server/api/integration/externalsources/crossref/entries?query=edinburgh&size=1
+    status: 200
+    observed: 'externalSourceEntries returned, first id 10.3366/edinburgh/9781474498302.003.0002'
+
+- standard: orcid
+  status: declared_not_functional
+  operator: institution
+  detail: >-
+    The DSpace deployment registers `orcid` and `orcidWorks` in its external-source
+    list, so ORCID integration is configured, but the live entries endpoint returns a
+    500 while the sibling crossref, datacite and ror sources all return 200. Recorded
+    as declared-but-not-functional rather than confirmed. This is a defect worth
+    reporting to the repository team, not a scoring credit.
+  evidence:
+  - url: https://datashare.ed.ac.uk/server/api/integration/externalsources
+    status: 200
+    observed: "source ids include orcid, orcidWorks, crossref, datacite, ror"
+  - url: https://datashare.ed.ac.uk/server/api/integration/externalsources/orcid/entries?query=edinburgh&size=1
+    status: 500
+    observed: '{"status":500,"error":"Internal Server Error","message":"An exception has occurred"}'
+
+- standard: scim
+  status: not_found
+  detail: No SCIM provisioning endpoint was reachable on any institution-owned host probed.
+- standard: lti
+  status: not_found
+  detail: >-
+    Edinburgh runs a virtual learning environment, but no LTI registration, tool
+    configuration or platform metadata is publicly reachable — it sits behind SSO.
+- standard: oneroster
+  status: not_found
+  detail: OneRoster is a K-12 rostering standard; no endpoint found and none expected at this institution.
+- standard: ed-fi
+  status: not_found
+  detail: Ed-Fi is a US K-12 data standard; not applicable to a UK university and not found.
+- standard: caliper
+  status: not_found
+  detail: No Caliper learning-analytics sensor or endpoint publicly reachable.
+- standard: qti
+  status: not_found
+  detail: No QTI assessment interchange surface publicly reachable.

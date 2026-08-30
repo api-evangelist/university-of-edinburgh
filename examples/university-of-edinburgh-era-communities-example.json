@@ -1,0 +1,94 @@
+{
+  "x-provenance": {
+    "method": "probed",
+    "generated": "2026-08-19",
+    "source": "https://era.ed.ac.uk/server/api/core/communities?size=1",
+    "note": "Verbatim response body observed on 2026-08-19, unmodified."
+  },
+  "response": {
+    "_embedded": {
+      "communities": [
+        {
+          "id": "dd460999-c272-490c-8c45-d48f85b4be18",
+          "uuid": "dd460999-c272-490c-8c45-d48f85b4be18",
+          "name": "Behavioural Research UK (BR-UK)",
+          "handle": "1842/42879",
+          "metadata": {
+            "dc.description": [
+              {
+                "value": "<p>\r\n<a href=\"https://usher.ed.ac.uk/behavioural-research-uk\">Behavioural Research UK (BR-UK) </a> Leadership Hub is supported by the <a href=\"https://gtr.ukri.org/projects?ref=ES%2FY001044%2F1\">Economic and Social Research Council</a>. The consortium serves as a leadership hub that is part of a wider ESRC funding programme to build national capability for behavioural research. BR-UK has been awarded \u00a312 million funding over five years to drive interdisciplinary innovation in behavioural research targeted towards addressing major societal challenges. BR-UK is led by <a href=\"https://www.research.ed.ac.uk/en/persons/linda-bauld\">Professor Linda Bauld</a> from the University of Edinburgh and <a href=\"https://profiles.ucl.ac.uk/7824-susan-michie\">Professor Susan Michie</a> from University College London.\r\n</p>\r\nIt involves behavioural researchers from a range of academic disciplines in eight UK Universities, along with partners including The Scottish Government, Welsh Government, government departments and agencies in Northern Ireland, the UK Health Security Agency, Public Health Wales, the Transport Research Laboratory and Zinc, along with the support of a range of other organisations. A post from BR-UK is also embedded within the UK Government Office for Science.",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.identifier.uri": [
+              {
+                "value": "https://hdl.handle.net/1842/42879",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.title": [
+              {
+                "value": "Behavioural Research UK (BR-UK)",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ]
+          },
+          "archivedItemsCount": -1,
+          "type": "community",
+          "_links": {
+            "collections": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18/collections"
+            },
+            "logo": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18/logo"
+            },
+            "subcommunities": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18/subcommunities"
+            },
+            "parentCommunity": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18/parentCommunity"
+            },
+            "adminGroup": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18/adminGroup"
+            },
+            "self": {
+              "href": "https://era.ed.ac.uk/server/api/core/communities/dd460999-c272-490c-8c45-d48f85b4be18"
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "first": {
+        "href": "https://era.ed.ac.uk/server/api/core/communities?page=0&size=1"
+      },
+      "self": {
+        "href": "https://era.ed.ac.uk/server/api/core/communities?size=1"
+      },
+      "next": {
+        "href": "https://era.ed.ac.uk/server/api/core/communities?page=1&size=1"
+      },
+      "last": {
+        "href": "https://era.ed.ac.uk/server/api/core/communities?page=53&size=1"
+      },
+      "search": {
+        "href": "https://era.ed.ac.uk/server/api/core/communities/search"
+      }
+    },
+    "page": {
+      "size": 1,
+      "totalElements": 54,
+      "totalPages": 54,
+      "number": 0
+    }
+  }
+}

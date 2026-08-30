@@ -1,0 +1,81 @@
+name: University of Edinburgh — API Lifecycle
+description: >-
+  Lifecycle state of the machine-readable surfaces the University of Edinburgh
+  operates, including the one that was retired underneath the catalog.
+generated: '2026-08-19'
+method: probed
+source: https://datashare.ed.ac.uk/server/api
+
+lifecycle:
+
+- surface: Edinburgh DataShare DSpace 6 legacy REST API
+  baseURL: https://datashare.ed.ac.uk/rest
+  state: retired
+  announced: false
+  deprecation_headers: false
+  detail: >-
+    Retired in place with no Sunset or Deprecation header and no redirect to the
+    replacement. The path now returns 404 behind the DSpace 8 Angular UI. It was
+    documented publicly in a 2021 University library blog post that is still live and
+    still describes the retired endpoint, so the institution's own documentation now
+    points at a dead API.
+  evidence:
+  - url: https://datashare.ed.ac.uk/rest
+    status: 404
+  - url: https://datashare.ed.ac.uk/rest/status
+    status: 404
+  superseded_by: https://datashare.ed.ac.uk/server/api
+
+- surface: Edinburgh DataShare DSpace 8.3 REST API
+  baseURL: https://datashare.ed.ac.uk/server/api
+  state: live
+  versioning: >-
+    Version is carried in the service root as dspaceVersion "DSpace 8.3" rather than
+    in the URL path or a header. There is no /v3/api-docs — the deployment does not
+    publish an OpenAPI document (probed 404), so consumers have no machine-readable
+    contract from the institution itself.
+  evidence:
+  - url: https://datashare.ed.ac.uk/server/api
+    status: 200
+    observed: 'dspaceVersion "DSpace 8.3"'
+  - url: https://datashare.ed.ac.uk/server/v3/api-docs
+    status: 404
+
+- surface: Edinburgh Research Archive (ERA) DSpace 8.3 REST API
+  baseURL: https://era.ed.ac.uk/server/api
+  state: live
+  versioning: dspaceVersion "DSpace 8.3" in the service root; no published OpenAPI.
+  evidence:
+  - url: https://era.ed.ac.uk/server/api
+    status: 200
+
+- surface: OAI-PMH (DataShare, ERA)
+  state: live
+  versioning: OAI-PMH protocolVersion 2.0, stable since the protocol's own 2002 revision.
+  note: >-
+    The Identify response reports a canonical baseURL of /server/oai/request while
+    the legacy /oai/request path also answers 200. Both work; the self-reported one
+    is the durable address.
+
+- surface: EIDF Data Catalogue (CKAN)
+  baseURL: https://catalogue.eidf.ac.uk/api/3/action
+  state: live
+  versioning: CKAN Action API v3, ckan_version 2.11.3 reported by status_show.
+  evidence:
+  - url: https://catalogue.eidf.ac.uk/api/3/action/status_show
+    status: 200
+
+- surface: Enterprise API gateway (api.ed.ac.uk)
+  state: gated
+  detail: >-
+    Live infrastructure, no public lifecycle. The Enterprise APIs programme's own
+    public project pages returned 500 on every probe on 2026-08-19, on both
+    digital-strategy.ed.ac.uk and www.ed.ac.uk, so the institution's public account of
+    its own API programme is currently broken.
+  evidence:
+  - url: https://api.ed.ac.uk/
+    status: 404
+  - url: https://www.ed.ac.uk/digital-transformation/current-programmes-projects/enterprise-apis
+    status: 500
+  - url: https://digital-strategy.ed.ac.uk/current-programmes-projects/enterprise-apis
+    status: 500

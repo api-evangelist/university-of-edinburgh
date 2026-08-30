@@ -1,0 +1,57 @@
+name: University of Edinburgh — Error Responses
+description: >-
+  Error envelopes observed on institution-operated University of Edinburgh surfaces.
+  Every example below is a verbatim body captured on 2026-08-19.
+generated: '2026-08-19'
+method: probed
+source: https://datashare.ed.ac.uk/server/api/core/items
+
+errors:
+
+- surface: Edinburgh DataShare / ERA DSpace 8.3 REST API
+  format: Spring Boot error envelope (application/json)
+  fields: [timestamp, status, error, message, path]
+  examples:
+  - status: 401
+    url: https://datashare.ed.ac.uk/server/api/core/items?size=1
+    body: '{"timestamp":"2026-08-19T21:22:53.155+00:00","status":401,"error":"Unauthorized","message":"Authentication is required","path":"/server/api/core/items"}'
+  - status: 404
+    url: https://datashare.ed.ac.uk/server/v3/api-docs
+    body: '{"type":"about:blank","title":"Not Found","status":404,"detail":"No static resource v3/api-docs.","instance":"/server/v3/api-docs"}'
+    note: >-
+      This one is RFC 9457 problem+json shaped, unlike the 401 above. The deployment
+      returns two different error vocabularies depending on which layer handles the
+      request — a real inconsistency, recorded rather than smoothed over.
+  - status: 500
+    url: https://datashare.ed.ac.uk/server/api/integration/externalsources/orcid/entries?query=edinburgh&size=1
+    body: '{"timestamp":"2026-08-19T21:26:52.775+00:00","status":500,"error":"Internal Server Error","message":"An exception has occurred","path":"/server/api/integration/externalsources/orcid/entries"}'
+    note: The ORCID external source is configured but throws; crossref, datacite and ror on the same deployment return 200.
+
+- surface: EIDF Data Catalogue (CKAN Action API)
+  format: CKAN envelope with success=false and an error object
+  fields: [help, success, error.message, error.__type]
+  note: CKAN returns HTTP 404/409 with the envelope; the envelope's success flag is the authoritative signal.
+
+- surface: Enterprise API gateway (api.ed.ac.uk)
+  format: WSO2 Choreo gateway JSON envelope
+  fields: [message, description, code]
+  examples:
+  - status: 404
+    url: https://api.ed.ac.uk/openapi
+    body: '{"message":"Not Found","description":"The requested resource is not available.","code":"404"}'
+
+- surface: OAI-PMH (DataShare, ERA)
+  format: OAI-PMH 2.0 XML <error> element
+  note: >-
+    Protocol errors are returned with HTTP 200 and an <error code="..."> element.
+    A client that grades on HTTP status alone will read every OAI protocol failure as
+    a success.
+
+- surface: RETIRED — Edinburgh DataShare DSpace 6 legacy /rest API
+  format: none
+  note: >-
+    https://datashare.ed.ac.uk/rest now returns HTTP 404 with an Angular SPA shell
+    body (372 KB of HTML titled "DSpace"). This is a soft-404 in reverse: the status
+    is honest but the body is a full page, so a naive presence check that reads bytes
+    rather than status will score a retired API as live. The API Evangelist catalog
+    held seven OpenAPI documents against this endpoint until this profiling run.

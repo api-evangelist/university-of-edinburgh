@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-edinburgh/main/json-schema/university-of-edinburgh-ckan-package-schema.json",
+  "title": "EIDF Data Catalogue Dataset (CKAN package)",
+  "description": "Shape of a dataset record returned by package_show on the Edinburgh International Data Facility CKAN 2.11.3 catalogue. Derived from a probed response.",
+  "x-operator": "institution",
+  "x-provenance": {
+    "method": "derived",
+    "generated": "2026-08-19",
+    "source": "https://catalogue.eidf.ac.uk/api/3/action/package_show?id=edi-consensus"
+  },
+  "type": "object",
+  "required": ["id", "name", "title", "state", "type"],
+  "properties": {
+    "id": {"type": "string", "format": "uuid"},
+    "name": {"type": "string", "description": "URL slug, EIDF projects prefix these with their project code e.g. eidf125-"},
+    "title": {"type": "string"},
+    "notes": {"type": ["string", "null"]},
+    "license_id": {"type": ["string", "null"]},
+    "license_title": {"type": ["string", "null"]},
+    "state": {"type": "string", "enum": ["active", "deleted", "draft"]},
+    "private": {"type": "boolean"},
+    "type": {"type": "string"},
+    "metadata_created": {"type": "string", "format": "date-time"},
+    "metadata_modified": {"type": "string", "format": "date-time"},
+    "num_resources": {"type": "integer"},
+    "num_tags": {"type": "integer"},
+    "organization": {"type": ["object", "null"], "description": "EIDF project that owns the dataset"},
+    "tags": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string"}, "name": {"type": "string"}, "display_name": {"type": "string"}, "state": {"type": "string"}}}},
+    "resources": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string"}, "name": {"type": ["string", "null"]}, "url": {"type": "string"}, "format": {"type": "string"}, "created": {"type": "string"}}}}
+  }
+}

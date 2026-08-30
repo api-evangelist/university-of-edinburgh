@@ -1,0 +1,123 @@
+{
+  "x-provenance": {
+    "method": "probed",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api/core/collections?size=1",
+    "note": "Verbatim response body observed on 2026-08-19, unmodified."
+  },
+  "response": {
+    "_embedded": {
+      "collections": [
+        {
+          "id": "cd30f157-ecda-4251-b152-1f345f4ffc67",
+          "uuid": "cd30f157-ecda-4251-b152-1f345f4ffc67",
+          "name": "3D Embryo Model High-Resolution Histology Sections collection",
+          "handle": "10283/8968",
+          "metadata": {
+            "dc.description": [
+              {
+                "value": "Information for this collection provided at the community level.",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.identifier.uri": [
+              {
+                "value": "https://hdl.handle.net/10283/8968",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.title": [
+              {
+                "value": "3D Embryo Model High-Resolution Histology Sections collection",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ]
+          },
+          "archivedItemsCount": -1,
+          "type": "collection",
+          "_links": {
+            "harvester": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/harvester"
+            },
+            "itemtemplate": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/itemtemplate"
+            },
+            "license": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/license"
+            },
+            "logo": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/logo"
+            },
+            "mappedItems": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/mappedItems"
+            },
+            "parentCommunity": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/parentCommunity"
+            },
+            "adminGroup": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/adminGroup"
+            },
+            "submittersGroup": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/submittersGroup"
+            },
+            "itemReadGroup": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/itemReadGroup"
+            },
+            "bitstreamReadGroup": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/bitstreamReadGroup"
+            },
+            "self": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67"
+            },
+            "workflowGroups": [
+              {
+                "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/workflowGroups/reviewer",
+                "name": "reviewer"
+              },
+              {
+                "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/workflowGroups/editor",
+                "name": "editor"
+              },
+              {
+                "href": "https://datashare.ed.ac.uk/server/api/core/collections/cd30f157-ecda-4251-b152-1f345f4ffc67/workflowGroups/finaleditor",
+                "name": "finaleditor"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_links": {
+      "first": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections?page=0&size=1"
+      },
+      "self": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections?size=1"
+      },
+      "next": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections?page=1&size=1"
+      },
+      "last": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections?page=508&size=1"
+      },
+      "search": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections/search"
+      }
+    },
+    "page": {
+      "size": 1,
+      "totalElements": 509,
+      "totalPages": 509,
+      "number": 0
+    }
+  }
+}

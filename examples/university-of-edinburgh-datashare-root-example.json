@@ -1,0 +1,257 @@
+{
+  "x-provenance": {
+    "method": "probed",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api",
+    "note": "Verbatim service root observed on 2026-08-19."
+  },
+  "response": {
+    "dspaceUI": "https://datashare.ed.ac.uk",
+    "dspaceName": "Datashare",
+    "dspaceServer": "https://datashare.ed.ac.uk/server",
+    "dspaceVersion": "DSpace 8.3",
+    "type": "root",
+    "_links": {
+      "actuator": {
+        "href": "https://datashare.ed.ac.uk/server/actuator"
+      },
+      "authn": {
+        "href": "https://datashare.ed.ac.uk/server/api/authn"
+      },
+      "authorizations": {
+        "href": "https://datashare.ed.ac.uk/server/api/authz/authorizations"
+      },
+      "bitstreamformats": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/bitstreamformats"
+      },
+      "bitstreams": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/bitstreams"
+      },
+      "browses": {
+        "href": "https://datashare.ed.ac.uk/server/api/discover/browses"
+      },
+      "bulkaccessconditionoptions": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/bulkaccessconditionoptions"
+      },
+      "bundles": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/bundles"
+      },
+      "claimedtasks": {
+        "href": "https://datashare.ed.ac.uk/server/api/workflow/claimedtasks"
+      },
+      "claimedtasks-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/workflow/claimedtasks/search"
+      },
+      "collections": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/collections"
+      },
+      "communities": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities"
+      },
+      "contentreport": {
+        "href": "https://datashare.ed.ac.uk/server/api/contentreport"
+      },
+      "correctiontypes": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/correctiontypes"
+      },
+      "discover": {
+        "href": "https://datashare.ed.ac.uk/server/api/discover"
+      },
+      "dso": {
+        "href": "https://datashare.ed.ac.uk/server/api/dso/find{?uuid}",
+        "templated": true
+      },
+      "enqueueretry": {
+        "href": "https://datashare.ed.ac.uk/server/api/ldn/messages/{id}/enqueueretry",
+        "templated": true
+      },
+      "entitytypes": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/entitytypes"
+      },
+      "eperson-registration": {
+        "href": "https://datashare.ed.ac.uk/server/api/eperson/registrations"
+      },
+      "epersons": {
+        "href": "https://datashare.ed.ac.uk/server/api/eperson/epersons"
+      },
+      "externalsources": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/externalsources"
+      },
+      "features": {
+        "href": "https://datashare.ed.ac.uk/server/api/authz/features"
+      },
+      "feedbacks": {
+        "href": "https://datashare.ed.ac.uk/server/api/tools/feedbacks"
+      },
+      "groups": {
+        "href": "https://datashare.ed.ac.uk/server/api/eperson/groups"
+      },
+      "identifiers": {
+        "href": "https://datashare.ed.ac.uk/server/api/pid/identifiers"
+      },
+      "itemfilters": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/itemfilters"
+      },
+      "itemrequests": {
+        "href": "https://datashare.ed.ac.uk/server/api/tools/itemrequests"
+      },
+      "items": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/items"
+      },
+      "itemtemplates": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/itemtemplates"
+      },
+      "ldnservices": {
+        "href": "https://datashare.ed.ac.uk/server/api/ldn/ldnservices"
+      },
+      "messages": {
+        "href": "https://datashare.ed.ac.uk/server/api/ldn/messages"
+      },
+      "metadatafields": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/metadatafields"
+      },
+      "metadataschemas": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/metadataschemas"
+      },
+      "notifyrequests": {
+        "href": "https://datashare.ed.ac.uk/server/api/ldn/notifyrequests"
+      },
+      "oidc": {
+        "href": "https://datashare.ed.ac.uk/server/api/authn"
+      },
+      "pid": {
+        "href": "https://datashare.ed.ac.uk/server/api/pid/find{?id}",
+        "templated": true
+      },
+      "pooltasks": {
+        "href": "https://datashare.ed.ac.uk/server/api/workflow/pooltasks"
+      },
+      "pooltasks-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/workflow/pooltasks/search"
+      },
+      "processes": {
+        "href": "https://datashare.ed.ac.uk/server/api/system/processes"
+      },
+      "properties": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/properties"
+      },
+      "qualityassuranceevents": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/qualityassuranceevents"
+      },
+      "qualityassurancesources": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/qualityassurancesources"
+      },
+      "qualityassurancetopics": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/qualityassurancetopics"
+      },
+      "registrations": {
+        "href": "https://datashare.ed.ac.uk/server/api/eperson/registrations"
+      },
+      "relationships": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/relationships"
+      },
+      "relationshiptypes": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/relationshiptypes"
+      },
+      "resourcepolicies": {
+        "href": "https://datashare.ed.ac.uk/server/api/authz/resourcepolicies"
+      },
+      "resourcepolicies-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/authz/resourcepolicies/search"
+      },
+      "scripts": {
+        "href": "https://datashare.ed.ac.uk/server/api/system/scripts"
+      },
+      "self": {
+        "href": "https://datashare.ed.ac.uk/server/api"
+      },
+      "sites": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/sites"
+      },
+      "statistics": {
+        "href": "https://datashare.ed.ac.uk/server/api/statistics"
+      },
+      "submissionaccessoptions": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissionaccessoptions"
+      },
+      "submissioncclicenseUrls": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissioncclicenseUrls"
+      },
+      "submissioncclicenseUrls-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissioncclicenseUrls/search"
+      },
+      "submissioncclicenses": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissioncclicenses"
+      },
+      "submissioncoarnotifyconfigs": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissioncoarnotifyconfigs"
+      },
+      "submissiondefinitions": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissiondefinitions"
+      },
+      "submissionforms": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissionforms"
+      },
+      "submissionsections": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissionsections"
+      },
+      "submissionuploads": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/submissionuploads"
+      },
+      "subscriptions": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/subscriptions"
+      },
+      "subscriptions-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/subscriptions/search"
+      },
+      "suggestions": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/suggestions"
+      },
+      "suggestionsources": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/suggestionsources"
+      },
+      "suggestiontargets": {
+        "href": "https://datashare.ed.ac.uk/server/api/integration/suggestiontargets"
+      },
+      "supervisionorders": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/supervisionorders"
+      },
+      "systemwidealerts": {
+        "href": "https://datashare.ed.ac.uk/server/api/system/systemwidealerts"
+      },
+      "usagereports": {
+        "href": "https://datashare.ed.ac.uk/server/api/statistics/usagereports"
+      },
+      "versionhistories": {
+        "href": "https://datashare.ed.ac.uk/server/api/versioning/versionhistories"
+      },
+      "versions": {
+        "href": "https://datashare.ed.ac.uk/server/api/versioning/versions"
+      },
+      "vocabularies": {
+        "href": "https://datashare.ed.ac.uk/server/api/submission/vocabularies"
+      },
+      "vocabularyEntryDetails": {
+        "href": "https://datashare.ed.ac.uk/server/api/submission/vocabularyEntryDetails"
+      },
+      "vocabularyEntryDetails-search": {
+        "href": "https://datashare.ed.ac.uk/server/api/submission/vocabularyEntryDetails/search"
+      },
+      "workflowactions": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/workflowactions"
+      },
+      "workflowdefinitions": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/workflowdefinitions"
+      },
+      "workflowitems": {
+        "href": "https://datashare.ed.ac.uk/server/api/workflow/workflowitems"
+      },
+      "workflowsteps": {
+        "href": "https://datashare.ed.ac.uk/server/api/config/workflowsteps"
+      },
+      "workspaceitems": {
+        "href": "https://datashare.ed.ac.uk/server/api/submission/workspaceitems"
+      }
+    }
+  }
+}

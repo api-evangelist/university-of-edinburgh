@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-edinburgh/main/json-schema/university-of-edinburgh-dspace-community-schema.json",
+  "title": "DSpace 8 Community (Edinburgh DataShare / ERA)",
+  "description": "Shape of a community object as returned by the DSpace 8.3 REST API operated by the University of Edinburgh at datashare.ed.ac.uk and era.ed.ac.uk. Derived from a probed response, not from vendor documentation.",
+  "x-operator": "institution",
+  "x-provenance": {
+    "method": "derived",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api/core/communities?size=1",
+    "note": "Derived from the observed 2026-08-19 response body. The API shape is DSpace open-source software; the deployment is Edinburgh's."
+  },
+  "type": "object",
+  "required": ["uuid", "name", "handle", "type", "metadata"],
+  "properties": {
+    "id": {"type": "string", "format": "uuid"},
+    "uuid": {"type": "string", "format": "uuid"},
+    "name": {"type": "string"},
+    "handle": {"type": "string", "pattern": "^[0-9]+/[0-9]+$", "description": "Handle System identifier, e.g. 10283/2821 (DataShare) or 1842/69 (ERA)"},
+    "archivedItemsCount": {"type": "integer", "description": "-1 when the deployment does not compute the count for anonymous callers"},
+    "type": {"type": "string", "const": "community"},
+    "metadata": {
+      "type": "object",
+      "description": "Qualified Dublin Core metadata map",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["value"],
+          "properties": {
+            "value": {"type": "string"},
+            "language": {"type": ["string", "null"]},
+            "authority": {"type": ["string", "null"]},
+            "confidence": {"type": "integer"},
+            "place": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "_links": {"type": "object"}
+  }
+}

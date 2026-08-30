@@ -1,0 +1,103 @@
+name: University of Edinburgh — Authentication
+description: >-
+  How authentication works across the institution-operated University of Edinburgh
+  surfaces. Every statement below was observed by probing on 2026-08-19.
+generated: '2026-08-19'
+method: probed
+source: https://datashare.ed.ac.uk/server/api/authn
+
+surfaces:
+
+- surface: Edinburgh DataShare REST API
+  operator: institution
+  baseURL: https://datashare.ed.ac.uk/server/api
+  anonymous_access: partial
+  detail: >-
+    Anonymous callers can read /core/communities, /core/collections,
+    /discover/search/objects and /discover/browses. /core/items and
+    /core/bitstreams return 401 to anonymous callers on this deployment, which is
+    stricter than a stock DSpace 8 install. Authenticated access uses DSpace's own
+    /authn endpoints, which on this deployment federate to the University's
+    Shibboleth IdP; there is no self-service API key or OAuth client registration.
+  evidence:
+  - url: https://datashare.ed.ac.uk/server/api/core/communities?size=1
+    status: 200
+  - url: https://datashare.ed.ac.uk/server/api/core/items?size=1
+    status: 401
+  - url: https://datashare.ed.ac.uk/server/api/core/bitstreams?size=1
+    status: 401
+
+- surface: Edinburgh Research Archive (ERA) REST API
+  operator: institution
+  baseURL: https://era.ed.ac.uk/server/api
+  anonymous_access: partial
+  detail: Same posture as DataShare — communities, collections and browse read anonymously, items 401.
+  evidence:
+  - url: https://era.ed.ac.uk/server/api/core/communities?size=1
+    status: 200
+  - url: https://era.ed.ac.uk/server/api/core/items?size=1
+    status: 401
+  - url: https://era.ed.ac.uk/server/api/discover/browses
+    status: 200
+
+- surface: OAI-PMH endpoints (DataShare, ERA)
+  operator: institution
+  anonymous_access: full
+  detail: >-
+    Fully anonymous. No key, no registration, no rate-limit header observed. This is
+    the most open machine-readable surface the institution operates and the one a
+    harvester should use.
+  evidence:
+  - url: https://datashare.ed.ac.uk/oai/request?verb=Identify
+    status: 200
+  - url: https://era.ed.ac.uk/oai/request?verb=Identify
+    status: 200
+
+- surface: EIDF Data Catalogue (CKAN)
+  operator: institution
+  baseURL: https://catalogue.eidf.ac.uk/api/3/action
+  anonymous_access: full
+  detail: >-
+    Read actions require no API key. The deployment carries a custom `eidf_oidc_auth`
+    CKAN extension, so authenticated write access is OIDC-based and tied to EIDF
+    project accounts rather than to a public developer signup.
+  evidence:
+  - url: https://catalogue.eidf.ac.uk/api/3/action/status_show
+    status: 200
+    observed: 'extensions include eidf_oidc_auth'
+  - url: https://catalogue.eidf.ac.uk/api/3/action/package_search?rows=1
+    status: 200
+
+- surface: Enterprise API gateway
+  operator: institution
+  baseURL: https://api.ed.ac.uk
+  anonymous_access: none
+  detail: >-
+    api.ed.ac.uk is live and resolves to a WSO2 Choreo tenant named `uoe`
+    (f5aad5f4-...-prod.prod.uoe.choreoapis.dev via an eu-west-2 ELB). Every path
+    probed returned the gateway's own JSON 404 envelope, including /openapi,
+    /api-docs, /services and /.well-known/openid-configuration. The gateway exists
+    and is Edinburgh-operated, but no route, catalogue or developer portal is
+    exposed to unauthenticated callers. This is a gated surface, not an absent one.
+  evidence:
+  - url: https://api.ed.ac.uk/
+    status: 404
+    observed: '{"message":"Not Found","description":"The requested resource is not available.","code":"404"}'
+  - url: https://api.ed.ac.uk/openapi
+    status: 404
+  - url: https://api.ed.ac.uk/.well-known/openid-configuration
+    status: 404
+
+identity_federation:
+  operator: institution
+  entityID: https://idp.ed.ac.uk/shibboleth
+  metadata: https://idp.ed.ac.uk/idp/shibboleth
+  detail: >-
+    Shibboleth IdP, SAML 2.0 metadata published unauthenticated. Note that the IdP
+    web root (https://idp.ed.ac.uk/) returns 403 by design — the metadata path is the
+    machine-readable surface and it answers 200.
+  evidence:
+  - url: https://idp.ed.ac.uk/idp/shibboleth
+    status: 200
+  - url: https://idp.ed.ac.uk/
+    status: 403

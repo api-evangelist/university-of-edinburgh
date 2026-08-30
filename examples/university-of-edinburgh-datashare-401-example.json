@@ -1,0 +1,15 @@
+{
+  "x-provenance": {
+    "method": "probed",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api/core/items?size=1",
+    "note": "Anonymous request to /core/items. This 401 is the real access boundary of the deployment."
+  },
+  "response": {
+    "timestamp": "2026-08-19T21:27:26.471+00:00",
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "Authentication is required",
+    "path": "/server/api/core/items"
+  }
+}

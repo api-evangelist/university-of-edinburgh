@@ -1,0 +1,35 @@
+name: University of Edinburgh — Scopes
+description: >-
+  Authorization scopes across institution-operated University of Edinburgh surfaces.
+  Recorded as an explicit negative finding: none of the publicly reachable surfaces
+  publish a scope vocabulary, and the one surface that would have one (the Choreo
+  API gateway at api.ed.ac.uk) exposes no discovery document to anonymous callers.
+generated: '2026-08-19'
+method: probed
+source: https://api.ed.ac.uk/.well-known/openid-configuration
+
+scopes: []
+
+findings:
+- surface: Edinburgh DataShare / ERA DSpace REST
+  scopes_published: false
+  detail: >-
+    DSpace 8 authorizes by resource policy and group membership, not by OAuth scope.
+    The API exposes /authorizations and /resourcepolicies rather than a scope list.
+  evidence:
+  - url: https://datashare.ed.ac.uk/server/api
+    status: 200
+    observed: '_links include authorizations and resourcepolicies, no scope resource'
+- surface: EIDF Data Catalogue (CKAN)
+  scopes_published: false
+  detail: CKAN uses API tokens and organisation roles; no scope vocabulary is published.
+- surface: Enterprise API gateway (api.ed.ac.uk)
+  scopes_published: unknown
+  detail: >-
+    A WSO2 Choreo gateway normally publishes OAuth2 scopes per API, but no OIDC
+    discovery document or developer portal is reachable anonymously, so no scope can
+    be recorded. Marked unknown rather than false — the absence is our visibility
+    limit, not a demonstrated institutional fact.
+  evidence:
+  - url: https://api.ed.ac.uk/.well-known/openid-configuration
+    status: 404

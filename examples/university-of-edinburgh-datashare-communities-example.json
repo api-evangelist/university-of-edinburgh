@@ -1,0 +1,94 @@
+{
+  "x-provenance": {
+    "method": "probed",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api/core/communities?size=1",
+    "note": "Verbatim response body observed on 2026-08-19, unmodified."
+  },
+  "response": {
+    "_embedded": {
+      "communities": [
+        {
+          "id": "6cd38919-9fa9-4d95-bac1-4ab7e33e177a",
+          "uuid": "6cd38919-9fa9-4d95-bac1-4ab7e33e177a",
+          "name": "3D Embryo Model High-Resolution Histology Sections",
+          "handle": "10283/2821",
+          "metadata": {
+            "dc.description": [
+              {
+                "value": "The eMouseAtlas embryo models capture detailed knowledge of mouse embryo anatomy and provide a spatial framework for annotating and analysing gene-expression and other spatially organised data. High-resolution haematoxylin-and-eosin or toluidine blue stained histology sections were used to generate detailed 3D reconstructions. The original high-resolution section images are provided as datasets to complement the lower-resolution 3D reconstructions used for data-mapping. Each dataset is identified with the EMA ID of the 3D model generated from this data. Also provided are section images that do not form part of the EMA series but are of general interest.\r\n\r\nResource website: <a target=\"blank\" href=\"http://www.emouseatlas.org/emap/ema/home.php\">http://www.emouseatlas.org/emap/ema/home.php</a>",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.identifier.uri": [
+              {
+                "value": "https://hdl.handle.net/10283/2821",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "dc.title": [
+              {
+                "value": "3D Embryo Model High-Resolution Histology Sections",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ]
+          },
+          "archivedItemsCount": -1,
+          "type": "community",
+          "_links": {
+            "collections": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a/collections"
+            },
+            "logo": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a/logo"
+            },
+            "subcommunities": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a/subcommunities"
+            },
+            "parentCommunity": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a/parentCommunity"
+            },
+            "adminGroup": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a/adminGroup"
+            },
+            "self": {
+              "href": "https://datashare.ed.ac.uk/server/api/core/communities/6cd38919-9fa9-4d95-bac1-4ab7e33e177a"
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "first": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities?page=0&size=1"
+      },
+      "self": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities?size=1"
+      },
+      "next": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities?page=1&size=1"
+      },
+      "last": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities?page=109&size=1"
+      },
+      "search": {
+        "href": "https://datashare.ed.ac.uk/server/api/core/communities/search"
+      }
+    },
+    "page": {
+      "size": 1,
+      "totalElements": 110,
+      "totalPages": 110,
+      "number": 0
+    }
+  }
+}
