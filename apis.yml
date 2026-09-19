@@ -136,6 +136,11 @@ apis:
   tags:
   - Artificial Intelligence
   - LLM
+  - Gateways
+  - Gated
+  tags_raw:
+  - Artificial Intelligence
+  - LLM
   - Gateway
   - Gated
   properties:
@@ -220,6 +225,11 @@ apis:
   humanURL: https://www.research.ed.ac.uk/
   tags:
   - Research Outputs
+  - CRI
+  - Tenants
+  - Vendor Platform
+  tags_raw:
+  - Research Outputs
   - CRIS
   - Tenant
   - Vendor Platform
@@ -238,6 +248,11 @@ apis:
     this institution.
   humanURL: https://discovered.ed.ac.uk/
   tags:
+  - Library
+  - Discovery
+  - Tenants
+  - Vendor Platform
+  tags_raw:
   - Library
   - Discovery
   - Tenant
