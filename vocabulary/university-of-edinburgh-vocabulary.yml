@@ -1,10 +1,16 @@
 vocabulary:
-  name: Edinburgh DataShare REST API Vocabulary
+  name: University of Edinburgh Programmable Surface Vocabulary
   description: >-
-    Controlled vocabulary of the core domain terms exposed by the Edinburgh
-    DataShare DSpace 6 REST API, the University of Edinburgh's open-access
-    research-data repository.
-  version: "1.0.0"
+    Controlled vocabulary of the domain terms exposed across the institution-operated
+    University of Edinburgh surfaces: the DSpace 8.3 repositories (Edinburgh DataShare
+    and the Edinburgh Research Archive), the EIDF Data Catalogue (CKAN) and the ELM
+    generative-AI gateway. Re-derived on 2026-08-19 from probed responses after the
+    DSpace 6 legacy REST API these terms originally described was found retired.
+  version: "2.0.0"
+  generated: '2026-08-19'
+  method: derived
+  source: https://datashare.ed.ac.uk/server/api
+  operator: institution
   terms:
     - term: Community
       definition: >-
@@ -61,3 +67,39 @@ vocabulary:
         Query parameter requesting that optional related fields (such as
         metadata, bitstreams or collections) be inlined in the response.
       tags: [parameter, query]
+    - term: Handle
+      definition: >-
+        Persistent Handle System identifier assigned to every community, collection
+        and item. DataShare uses prefix 10283; the Edinburgh Research Archive uses 1842.
+      tags: [identifier, dspace, persistent]
+    - term: DOI
+      definition: >-
+        DataCite Digital Object Identifier minted under the University of Edinburgh
+        prefix 10.7488 — 10.7488/ds/* for DataShare deposits, 10.7488/era/* for ERA.
+      tags: [identifier, datacite, persistent]
+    - term: Set
+      definition: >-
+        OAI-PMH set used to scope a selective harvest. Both repositories expose one set
+        per community and collection, named com_<prefix>_<id> and col_<prefix>_<id>.
+      tags: [oai-pmh, harvesting]
+    - term: MetadataPrefix
+      definition: >-
+        OAI-PMH metadata format identifier. Both repositories serve oai_dc, qdc, dim,
+        mods, mets, ore, didl, xoai, rdf, marc and the UK research formats rioxx and
+        uketd_dc; ERA adds etdms for electronic theses.
+      tags: [oai-pmh, metadata]
+    - term: Package
+      definition: >-
+        A dataset record in the EIDF Data Catalogue (CKAN terminology). Owned by an
+        EIDF project organisation and named with that project's code as a prefix.
+      tags: [object, ckan, open-data]
+    - term: EIDF Project
+      definition: >-
+        A funded project on the Edinburgh International Data Facility, modelled as a
+        CKAN organisation and used as the ownership boundary for published datasets.
+      tags: [object, ckan, research-computing]
+    - term: ELM
+      definition: >-
+        Edinburgh Language Models — the University's own generative-AI access platform,
+        exposing an OpenAI-compatible bearer-authenticated API to UK tertiary education.
+      tags: [ai, gateway, institution-operated]

@@ -1,7 +1,16 @@
 extends: [[spectral:oas, off]]
 formats:
   - oas3
-documentationUrl: https://libraryblogs.is.ed.ac.uk/datablog/2021/12/17/new-feature-in-edinburgh-datashare-the-rest-api/
+documentationUrl: https://datashare.ed.ac.uk/server/api
+# x-provenance:
+#   method: derived
+#   generated: '2026-08-19'
+#   source: https://datashare.ed.ac.uk/server/api
+#   operator: institution
+#   note: >-
+#     Retargeted on 2026-08-19. The previous documentationUrl pointed at a 2021
+#     University library blog post describing the DSpace 6 legacy /rest API, which is
+#     now retired (404). That post is still live and still documents the dead endpoint.
 rules:
   datashare-info-contact:
     description: API info should include a contact.

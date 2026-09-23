@@ -1,11 +1,7 @@
 openapi: 3.2.0
 info:
   title: Edinburgh Language Models ELM API
-  description: 'ELM is the University of Edinburgh''s own generative-AI access platform, described by its own metadata as "an online platform that delivers generative AI to UK tertiary education." It exposes an OpenAI-compatible HTTP API at https://elm.edina.ac.uk/api/v1 secured with a bearer token.
-
-    This document was reconstructed by PROBING the live service on 2026-08-19. Only what was actually observed is described. Anonymous calls to /api/v1/models and /api/v1/chat/completions both returned HTTP 401 with an OpenAI-shaped error envelope, which is what establishes both the route and the auth scheme. The request and response bodies of the authenticated paths are NOT described here, because they were not observed — the platform publishes no OpenAPI document (/openapi.json and /docs both return the Angular SPA shell, a soft-200).
-
-    Operator note: this is one of the few genuinely institution-ENGINEERED API surfaces in the University of Edinburgh''s public footprint. edina.ac.uk is registered to the EDINA National Data Centre with Domain Owner "University of Edinburgh", and EDINA is a University of Edinburgh centre. Edinburgh is acting as a producer here, not a buyer.'
+  description: ELM is the University of Edinburgh's own generative-AI access platform, described by its own metadata as "an online platform that delivers generative AI to UK tertiary education." It exposes an OpenAI-compatible HTTP API at https://elm.edina.ac.uk/api/v1 secured with a bearer token.
   version: '1'
   contact:
     name: EDINA, University of Edinburgh

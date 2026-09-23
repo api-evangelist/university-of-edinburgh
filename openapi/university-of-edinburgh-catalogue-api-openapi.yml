@@ -1,11 +1,7 @@
 openapi: 3.2.0
 info:
   title: EIDF Data Catalogue API
-  description: 'CKAN 2.11.3 Action API for the Edinburgh International Data Facility (EIDF) Data Catalogue, operated by EPCC at the University of Edinburgh. Probed live on 2026-08-19: status_show returned CKAN 2.11.3 with the site''s own extension list, package_search returned 14 public datasets and organization_list returned 13 EIDF project organisations. Anonymous read requires no key.
-
-    This is the clearest institution-operated open-data surface in Edinburgh''s public footprint: EPCC runs the platform, the domain is Edinburgh''s, and the deployment carries a custom eidf_oidc_auth extension written for it.
-
-    Only the read actions verified anonymously are described. CKAN exposes many more actions; the ones below are the ones that answered.'
+  description: CKAN 2.11.3 Action API for the Edinburgh International Data Facility (EIDF) Data Catalogue, operated by EPCC at the University of Edinburgh.
   version: '3'
   contact:
     name: Edinburgh International Data Facility (EPCC, University of Edinburgh)
@@ -158,6 +154,22 @@ paths:
                         type: string
 components:
   schemas:
+    ErrorEnvelope:
+      type: object
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            __type:
+              type: string
     Status:
       type: object
       properties:
@@ -177,6 +189,15 @@ components:
           type: array
           items:
             type: string
+    Envelope:
+      type: object
+      description: Standard CKAN Action API response envelope (observed)
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
     Package:
       type: object
       description: CKAN dataset (observed shape)
@@ -250,28 +271,3 @@ components:
                 type: string
               created:
                 type: string
-    ErrorEnvelope:
-      type: object
-      properties:
-        help:
-          type: string
-          format: uri
-        success:
-          type: boolean
-          example: false
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-            __type:
-              type: string
-    Envelope:
-      type: object
-      description: Standard CKAN Action API response envelope (observed)
-      properties:
-        help:
-          type: string
-          format: uri
-        success:
-          type: boolean

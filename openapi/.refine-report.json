@@ -1,12 +1,10 @@
 {
   "provider": "university-of-edinburgh",
   "sources": [
-    "university-of-edinburgh-datashare-oai-pmh-openapi.yml",
-    "university-of-edinburgh-datashare-repository-api-openapi.yml",
-    "university-of-edinburgh-eidf-data-catalogue-api-openapi.yml",
-    "university-of-edinburgh-elm-api-openapi.yml",
-    "university-of-edinburgh-era-oai-pmh-openapi.yml",
-    "university-of-edinburgh-era-repository-api-openapi.yml"
+    "_original/university-of-edinburgh-datashare-oai-pmh-openapi.yml",
+    "_original/university-of-edinburgh-datashare-repository-api-openapi.yml",
+    "_original/university-of-edinburgh-eidf-data-catalogue-api-openapi.yml",
+    "_original/university-of-edinburgh-elm-api.yaml"
   ],
   "outputs": [
     "university-of-edinburgh-oai-pmh-api-openapi.yml",
@@ -14,25 +12,29 @@
     "university-of-edinburgh-catalogue-api-openapi.yml",
     "university-of-edinburgh-elm-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/university-of-edinburgh-datashare-oai-pmh-openapi.yml",
-    "archived openapi/university-of-edinburgh-datashare-repository-api-openapi.yml",
-    "archived openapi/university-of-edinburgh-eidf-data-catalogue-api-openapi.yml",
-    "archived openapi/university-of-edinburgh-era-oai-pmh-openapi.yml",
-    "archived openapi/university-of-edinburgh-era-repository-api-openapi.yml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "7 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "university-of-edinburgh-datashare-oai-pmh-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "university-of-edinburgh-datashare-repository-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "university-of-edinburgh-eidf-data-catalogue-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "university-of-edinburgh-elm-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "university-of-edinburgh-era-oai-pmh-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "university-of-edinburgh-era-repository-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "tag 'OAI-PMH' spans 2 source specs (university-of-edinburgh-datashare-oai-pmh-openapi.yml, university-of-edinburgh-era-oai-pmh-openapi.yml): per-path servers applied",
-    "tag 'Repository' spans 2 source specs (university-of-edinburgh-datashare-repository-api-openapi.yml, university-of-edinburgh-era-repository-api-openapi.yml): per-path servers applied",
-    "apis.yml register: written (+3 apis, 8 total)"
+    "university-of-edinburgh-elm-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "_original/university-of-edinburgh-era-repository-api.yaml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-era-repository-api-openapi.yml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-era-oai-pmh.yaml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-era-oai-pmh-openapi.yml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-eidf-data-catalogue-api.yaml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-datashare-repository-api.yaml: archived document superseded by a larger archived document",
+    "_original/university-of-edinburgh-datashare-oai-pmh.yaml: archived document superseded by a larger archived document",
+    "university-of-edinburgh-catalogue-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-edinburgh-elm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-edinburgh-oai-pmh-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-edinburgh-repository-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

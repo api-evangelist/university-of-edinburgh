@@ -1,4 +1,11 @@
 {
+  "x-provenance": {
+    "method": "derived",
+    "generated": "2026-08-19",
+    "source": "https://datashare.ed.ac.uk/server/api/core/communities",
+    "operator": "institution",
+    "note": "Re-derived from probed DSpace 8.3 responses. The earlier version of this context described the retired DSpace 6 legacy REST API."
+  },
   "@context": {
     "@version": 1.1,
     "schema": "https://schema.org/",

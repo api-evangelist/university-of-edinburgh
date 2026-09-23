@@ -1,20 +1,24 @@
 openapi: 3.2.0
 info:
-  title: University Of Edinburgh Repository API
+  title: Edinburgh DataShare REST Repository API
+  description: Public read surface of the DSpace 8.3 REST API operated by the University of Edinburgh at datashare.ed.ac.uk.
   version: '8.3'
+  contact:
+    name: Datashare
+    url: https://datashare.ed.ac.uk/
+    email: data-library-team@mlist.is.ed.ac.uk
   license:
     name: DSpace BSD License
     url: https://github.com/DSpace/DSpace/blob/dspace-8_x/LICENSE
   x-operator: institution
-  x-refined-note:
-  - x-operator-evidence differs across the merged source definitions and was not carried
-  - x-provenance differs across the merged source definitions and was not carried
-  description: 'Operations tagged Repository across 2 of this provider''s published API definitions: university-of-edinburgh-datashare-repository-api-openapi.yml, university-of-edinburgh-era-repository-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  x-operator-evidence: 'host datashare.ed.ac.uk is under ed.ac.uk, Domain Owner: University of Edinburgh (Nominet whois)'
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://datashare.ed.ac.uk/server/api
 servers:
 - url: https://datashare.ed.ac.uk/server/api
   description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
-- url: https://era.ed.ac.uk/server/api
-  description: Edinburgh Research Archive (ERA) DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
 tags:
 - name: Repository
   description: Service root, communities, collections and discovery for Edinburgh DataShare
@@ -33,9 +37,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Root'
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /core/communities:
     get:
       tags:
@@ -53,9 +54,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/CommunityPage'
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /core/collections:
     get:
       tags:
@@ -73,9 +71,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/CollectionPage'
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /discover/search/objects:
     get:
       tags:
@@ -107,9 +102,6 @@ paths:
                     type: object
                   _links:
                     type: object
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /discover/browses:
     get:
       tags:
@@ -129,9 +121,6 @@ paths:
                     type: object
                   _links:
                     type: object
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /core/items:
     get:
       tags:
@@ -146,9 +135,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
   /core/bitstreams:
     get:
       tags:
@@ -163,9 +149,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://datashare.ed.ac.uk/server/api
-      description: Edinburgh DataShare DSpace 8.3 REST endpoint (probed 200 on 2026-08-19)
 components:
   schemas:
     Community:
@@ -210,20 +193,6 @@ components:
                   type: integer
                 place:
                   type: integer
-        _links:
-          type: object
-    CollectionPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            collections:
-              type: array
-              items:
-                $ref: '#/components/schemas/Collection'
-        page:
-          $ref: '#/components/schemas/PageMeta'
         _links:
           type: object
     Collection:
@@ -272,6 +241,45 @@ components:
           example: root
         _links:
           type: object
+    CommunityPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            communities:
+              type: array
+              items:
+                $ref: '#/components/schemas/Community'
+        page:
+          $ref: '#/components/schemas/PageMeta'
+        _links:
+          type: object
+    CollectionPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            collections:
+              type: array
+              items:
+                $ref: '#/components/schemas/Collection'
+        page:
+          $ref: '#/components/schemas/PageMeta'
+        _links:
+          type: object
+    PageMeta:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
     Error:
       type: object
       description: Spring Boot error envelope (observed)
@@ -287,54 +295,6 @@ components:
           type: string
         path:
           type: string
-    PageMeta:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
-    CommunityPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            communities:
-              type: array
-              items:
-                $ref: '#/components/schemas/Community'
-        page:
-          $ref: '#/components/schemas/PageMeta'
-        _links:
-          type: object
-    Root_2:
-      type: object
-      description: DSpace service root (observed shape)
-      properties:
-        dspaceUI:
-          type: string
-          format: uri
-          example: https://era.ed.ac.uk
-        dspaceName:
-          type: string
-          example: ERA
-        dspaceServer:
-          type: string
-          format: uri
-          example: https://era.ed.ac.uk/server
-        dspaceVersion:
-          type: string
-          example: DSpace 8.3
-        type:
-          type: string
-          example: root
-        _links:
-          type: object
   parameters:
     Page:
       name: page
@@ -352,6 +312,3 @@ components:
         type: integer
         default: 20
       description: Page size
-x-refined-from:
-- university-of-edinburgh-datashare-repository-api-openapi.yml
-- university-of-edinburgh-era-repository-api-openapi.yml

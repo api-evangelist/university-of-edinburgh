@@ -1,25 +1,29 @@
 openapi: 3.2.0
 info:
-  title: University Of Edinburgh OAI PMH API
+  title: Edinburgh DataShare OAI PMH API
+  description: OAI-PMH 2.0 metadata harvesting endpoint operated by the University of Edinburgh for Edinburgh DataShare.
   version: '2.0'
+  contact:
+    name: Datashare
+    url: https://datashare.ed.ac.uk/
+    email: data-library-team@mlist.is.ed.ac.uk
   x-operator: institution
-  x-refined-note:
-  - x-operator-evidence differs across the merged source definitions and was not carried
-  - x-provenance differs across the merged source definitions and was not carried
-  description: 'Operations tagged OAI-PMH across 2 of this provider''s published API definitions: university-of-edinburgh-datashare-oai-pmh-openapi.yml, university-of-edinburgh-era-oai-pmh-openapi.yml. Each path carries the servers of the definition it was published in.'
+  x-operator-evidence: 'host datashare.ed.ac.uk is under ed.ac.uk, Domain Owner: University of Edinburgh (Nominet whois)'
+  x-provenance:
+    method: probed
+    generated: '2026-08-19'
+    source: https://datashare.ed.ac.uk/server/oai/request?verb=Identify
 servers:
 - url: https://datashare.ed.ac.uk/server/oai
   description: Canonical baseURL as self-reported by the Identify response (probed 200)
-- url: https://era.ed.ac.uk/server/oai
-  description: Canonical baseURL as self-reported by the Identify response (probed 200)
 tags:
-- name: OAI-PMH
+- name: oai pmh
   description: OAI-PMH 2.0 metadata harvesting for Edinburgh DataShare
 paths:
   /request:
     get:
       tags:
-      - OAI-PMH
+      - oai pmh
       operationId: oaiRequest
       summary: OAI-PMH request entry point
       description: Single OAI-PMH entry point. The verb parameter selects the operation. Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords and GetRecord were all reachable anonymously when probed.
@@ -94,9 +98,3 @@ paths:
               schema:
                 type: string
                 description: OAI-PMH 2.0 XML document
-    servers:
-    - url: https://datashare.ed.ac.uk/server/oai
-      description: Canonical baseURL as self-reported by the Identify response (probed 200)
-x-refined-from:
-- university-of-edinburgh-datashare-oai-pmh-openapi.yml
-- university-of-edinburgh-era-oai-pmh-openapi.yml

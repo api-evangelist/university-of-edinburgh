@@ -3,7 +3,7 @@ name: University of Edinburgh
 description: University of Edinburgh public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/university-of-edinburgh/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 reviews:
   - date: '2026-06-03'
     rating: 3
@@ -23,14 +23,50 @@ reviews:
         status: 200
         note: Edinburgh DataShare repository home (live).
       - url: https://datashare.ed.ac.uk/rest
+        status: 404
+        note: >-
+          RETIRED. Re-probed 2026-08-19. The DSpace 6 legacy REST API is gone; the host
+          now serves a DSpace 8.3 Angular UI and returns 404 with a full HTML body.
+      - url: https://datashare.ed.ac.uk/server/api
         status: 200
-        note: DSpace REST API index; /rest/communities returns application/json.
+        note: >-
+          Replacement DSpace 8.3 REST API (probed 2026-08-19). dspaceVersion "DSpace 8.3".
+          Communities/collections/discover readable anonymously; items and bitstreams 401.
+      - url: https://era.ed.ac.uk/server/api
+        status: 200
+        note: Edinburgh Research Archive, a second institution-operated DSpace 8.3 repository (probed 2026-08-19).
+      - url: https://era.ed.ac.uk/oai/request?verb=Identify
+        status: 200
+        note: ERA OAI-PMH 2.0, 13 metadata prefixes including etdms (probed 2026-08-19).
+      - url: https://idp.ed.ac.uk/idp/shibboleth
+        status: 200
+        note: >-
+          Shibboleth IdP SAML 2.0 metadata, entityID https://idp.ed.ac.uk/shibboleth,
+          OrganizationName "University of Edinburgh" (probed 2026-08-19).
+      - url: https://catalogue.eidf.ac.uk/api/3/action/status_show
+        status: 200
+        note: >-
+          EIDF Data Catalogue, CKAN 2.11.3, 14 public datasets, anonymous read
+          (probed 2026-08-19). eidf.ac.uk Domain Owner is the University of Edinburgh.
+      - url: https://elm.edina.ac.uk/api/v1/models
+        status: 401
+        note: >-
+          ELM generative-AI gateway, OpenAI-compatible, bearer auth (probed 2026-08-19).
+          edina.ac.uk Domain Owner is the University of Edinburgh.
+      - url: https://api.ed.ac.uk/
+        status: 404
+        note: >-
+          Enterprise API gateway, live. Resolves to WSO2 Choreo tenant `uoe`. Returns the
+          gateway's own JSON 404 on every probed path; no public routes (probed 2026-08-19).
       - url: https://datashare.ed.ac.uk/oai/request?verb=Identify
         status: 200
         note: DataShare OAI-PMH endpoint; valid OAI-PMH XML returned.
       - url: https://www.pure.ed.ac.uk/ws/oai?verb=Identify
-        status: 200
-        note: Pure / Research Explorer OAI-PMH endpoint; valid OAI-PMH XML returned.
+        status: 500
+        note: >-
+          Re-probed 2026-08-19: now returns HTTP 500. www.research.ed.ac.uk/ws/oai also
+          500s. Elsevier Pure is a TENANT platform — the contract is Elsevier's, not
+          Edinburgh's, and is not saved under this institution.
       - url: https://www.research.ed.ac.uk/
         status: 200
         note: Edinburgh Research Explorer public portal (live).
