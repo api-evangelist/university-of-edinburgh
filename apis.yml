@@ -306,7 +306,7 @@ apis:
   name: University of Edinburgh OAI PMH API
   description: OAI-PMH 2.0 metadata harvesting for Edinburgh DataShare
   humanURL: https://datashare.ed.ac.uk/
-  baseURL: https://datashare.ed.ac.uk/server/api
+  baseURL: https://datashare.ed.ac.uk/server/oai/request
   tags:
   - OAI-PMH
   properties:

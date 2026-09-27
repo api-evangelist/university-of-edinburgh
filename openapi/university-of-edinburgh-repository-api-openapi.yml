@@ -151,6 +151,81 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Collection:
+      type: object
+      description: DSpace collection (observed shape)
+      properties:
+        id:
+          type: string
+          format: uuid
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        handle:
+          type: string
+        archivedItemsCount:
+          type: integer
+        type:
+          type: string
+          example: collection
+        metadata:
+          type: object
+        _links:
+          type: object
+    Error:
+      type: object
+      description: Spring Boot error envelope (observed)
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        status:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+    Root:
+      type: object
+      description: DSpace service root (observed shape)
+      properties:
+        dspaceUI:
+          type: string
+          format: uri
+          example: https://datashare.ed.ac.uk
+        dspaceName:
+          type: string
+          example: Datashare
+        dspaceServer:
+          type: string
+          format: uri
+          example: https://datashare.ed.ac.uk/server
+        dspaceVersion:
+          type: string
+          example: DSpace 8.3
+        type:
+          type: string
+          example: root
+        _links:
+          type: object
+    CollectionPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            collections:
+              type: array
+              items:
+                $ref: '#/components/schemas/Collection'
+        page:
+          $ref: '#/components/schemas/PageMeta'
+        _links:
+          type: object
     Community:
       type: object
       description: DSpace community (observed shape)
@@ -195,52 +270,6 @@ components:
                   type: integer
         _links:
           type: object
-    Collection:
-      type: object
-      description: DSpace collection (observed shape)
-      properties:
-        id:
-          type: string
-          format: uuid
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        handle:
-          type: string
-        archivedItemsCount:
-          type: integer
-        type:
-          type: string
-          example: collection
-        metadata:
-          type: object
-        _links:
-          type: object
-    Root:
-      type: object
-      description: DSpace service root (observed shape)
-      properties:
-        dspaceUI:
-          type: string
-          format: uri
-          example: https://datashare.ed.ac.uk
-        dspaceName:
-          type: string
-          example: Datashare
-        dspaceServer:
-          type: string
-          format: uri
-          example: https://datashare.ed.ac.uk/server
-        dspaceVersion:
-          type: string
-          example: DSpace 8.3
-        type:
-          type: string
-          example: root
-        _links:
-          type: object
     CommunityPage:
       type: object
       properties:
@@ -251,20 +280,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Community'
-        page:
-          $ref: '#/components/schemas/PageMeta'
-        _links:
-          type: object
-    CollectionPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            collections:
-              type: array
-              items:
-                $ref: '#/components/schemas/Collection'
         page:
           $ref: '#/components/schemas/PageMeta'
         _links:
@@ -280,21 +295,6 @@ components:
           type: integer
         number:
           type: integer
-    Error:
-      type: object
-      description: Spring Boot error envelope (observed)
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        status:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-        path:
-          type: string
   parameters:
     Page:
       name: page
