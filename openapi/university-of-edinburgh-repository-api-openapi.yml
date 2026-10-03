@@ -151,6 +151,45 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    CommunityPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            communities:
+              type: array
+              items:
+                $ref: '#/components/schemas/Community'
+        page:
+          $ref: '#/components/schemas/PageMeta'
+        _links:
+          type: object
+    CollectionPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            collections:
+              type: array
+              items:
+                $ref: '#/components/schemas/Collection'
+        page:
+          $ref: '#/components/schemas/PageMeta'
+        _links:
+          type: object
+    PageMeta:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
     Collection:
       type: object
       description: DSpace collection (observed shape)
@@ -212,20 +251,6 @@ components:
           example: root
         _links:
           type: object
-    CollectionPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            collections:
-              type: array
-              items:
-                $ref: '#/components/schemas/Collection'
-        page:
-          $ref: '#/components/schemas/PageMeta'
-        _links:
-          type: object
     Community:
       type: object
       description: DSpace community (observed shape)
@@ -270,40 +295,7 @@ components:
                   type: integer
         _links:
           type: object
-    CommunityPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            communities:
-              type: array
-              items:
-                $ref: '#/components/schemas/Community'
-        page:
-          $ref: '#/components/schemas/PageMeta'
-        _links:
-          type: object
-    PageMeta:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
   parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-      description: Zero-based page number
     Size:
       name: size
       in: query
@@ -312,3 +304,11 @@ components:
         type: integer
         default: 20
       description: Page size
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Zero-based page number

@@ -154,31 +154,6 @@ paths:
                         type: string
 components:
   schemas:
-    Envelope:
-      type: object
-      description: Standard CKAN Action API response envelope (observed)
-      properties:
-        help:
-          type: string
-          format: uri
-        success:
-          type: boolean
-    ErrorEnvelope:
-      type: object
-      properties:
-        help:
-          type: string
-          format: uri
-        success:
-          type: boolean
-          example: false
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-            __type:
-              type: string
     Package:
       type: object
       description: CKAN dataset (observed shape)
@@ -271,3 +246,28 @@ components:
           type: array
           items:
             type: string
+    ErrorEnvelope:
+      type: object
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            __type:
+              type: string
+    Envelope:
+      type: object
+      description: Standard CKAN Action API response envelope (observed)
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
