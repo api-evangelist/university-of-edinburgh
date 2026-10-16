@@ -1,23 +1,4 @@
 edges:
-- partner_name: OpenAI
-  partner: openai
-  partner_match: domain
-  type: contract
-  channel: provider-built
-  relationship: compatible
-  direction: provider-built
-  evidence: https://github.com/api-evangelist/university-of-edinburgh/blob/main/openapi/university-of-edinburgh-elm-api-openapi.yml#L4
-  contract_reference:
-    repo: university-of-edinburgh
-    spec_file: university-of-edinburgh-elm-api-openapi.yml
-    property: description
-    value: OpenAI-compatible
-    note: 'university-of-edinburgh declares OpenAI compatibility: ''description: ELM is the University of Edinburgh''s
-      own generative-AI access platform, described by its own metadata as "an online platform that delivers generati'''
-    detected_by: sweep-model-routing.py
-    detected: '2026-10-13'
-  detected_by: sweep-model-routing.py
-  first_seen: '2026-10-13'
 - partner_name: eduGAIN
   partner: null
   type: register
@@ -99,6 +80,25 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-higher-ed.py
   first_seen: '2026-10-15'
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/university-of-edinburgh/blob/main/openapi/university-of-edinburgh-elm-api-openapi.yml#L4
+  contract_reference:
+    repo: university-of-edinburgh
+    spec_file: university-of-edinburgh-elm-api-openapi.yml
+    property: description
+    value: OpenAI-compatible
+    note: 'university-of-edinburgh declares OpenAI compatibility: ''description: ELM is the University of Edinburgh''s
+      own generative-AI access platform, described by its own metadata as "an online platform that delivers generati'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-15'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
 generated: '2026-10-13'
 method: searched
 checked:
