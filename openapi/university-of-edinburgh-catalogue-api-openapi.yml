@@ -173,15 +173,6 @@ components:
           type: array
           items:
             type: string
-    Envelope:
-      type: object
-      description: Standard CKAN Action API response envelope (observed)
-      properties:
-        help:
-          type: string
-          format: uri
-        success:
-          type: boolean
     Package:
       type: object
       description: CKAN dataset (observed shape)
@@ -271,3 +262,12 @@ components:
               type: string
             __type:
               type: string
+    Envelope:
+      type: object
+      description: Standard CKAN Action API response envelope (observed)
+      properties:
+        help:
+          type: string
+          format: uri
+        success:
+          type: boolean
